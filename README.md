@@ -8,7 +8,7 @@ Active Issues:
 -Collide properly with walls
 
 Desired features:
--HUD (health, time, score for zombies killed and waves, time bonus for completing a wave quickly)
+-HUD (health, stamina, time, score for zombies killed and waves, time bonus for completing a wave quickly)
 -Spawning entities while game is running
 -Shooting mechanics
 -Pickups (bonuses + weapons)
