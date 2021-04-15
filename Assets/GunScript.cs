@@ -1,4 +1,8 @@
-﻿
+﻿/*
+ * FileName: GunScript.cs
+ * Purpose: Implement basic gun simulation
+ * Date: 4/14/21                                        */
+
 using UnityEngine;
 
 public class GunScript : MonoBehaviour
@@ -14,17 +18,11 @@ public class GunScript : MonoBehaviour
     public AudioSource audioSource;
 
     private float nextTimeToFire = 0.0f;
-    // Update is called once per frame
+
     void Update()
     {
-        //if(Input.GetButtonDown("Fire1"))
-
         if(Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
-        //if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("left click");
-            //nextTimeToFire = Time.time + 1f / fireRate;
-            //nextTimeToFire = Time.time + fireRate;
             nextTimeToFire = Time.time + 0.5f;
             Shoot();
         }
@@ -34,7 +32,6 @@ public class GunScript : MonoBehaviour
     {
         muzzleFlash.Play();
         audioSource.Play();
-        //muzzleFlash.Stop();
         RaycastHit hit;
         if(Physics.Raycast(weapon.transform.position, weapon.transform.forward, out hit))
         {
@@ -53,6 +50,5 @@ public class GunScript : MonoBehaviour
 
         GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Object.Destroy(impactInstant, 2f);
-        //muzzleFlash.Stop();
     }
 }

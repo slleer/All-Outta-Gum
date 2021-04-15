@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ * FileName: PlayerMovement.cs
+ * Purpose: Implement player movement using WASD + Shift
+ * Date: 4/14/21                                        */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -13,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float deltaPosition = 10.0f;
     public float jumpHeight = 5.0f;
     public float sprintMultiplier = 1.5f;
-    //Vector3 position;
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift))
@@ -39,10 +42,5 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
                 transform.Translate(deltaPosition * Vector3.right * Time.deltaTime);
         } 
-        
-        //if (Input.GetKeyUp(KeyCode.Space))
-        //    transform.Translate(jumpHeight * Vector3.up * Time.deltaTime);
-
-        //transform.Translate(position);
     }
 }
