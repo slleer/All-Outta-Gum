@@ -1,4 +1,8 @@
-﻿
+﻿/*
+ * FileName: Target.cs
+ * Purpose: Implement basic health and damage scripts
+ * Date: 4/14/21                                        */
+
 using UnityEngine;
 
 public class Target : MonoBehaviour
