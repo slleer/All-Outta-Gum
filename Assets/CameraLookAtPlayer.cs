@@ -13,7 +13,7 @@ public class CameraLookAtPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(target.transform.position.x, 40, target.transform.position.z);
+        transform.position = new Vector3(target.transform.position.x, 60, target.transform.position.z);
         //transform.position.z = target.transform.position.z;
     }
 }

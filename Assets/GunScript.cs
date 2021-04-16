@@ -6,15 +6,15 @@ public class GunScript : MonoBehaviour
     public float damage = 10.0f;
     public float range = 100.0f;
     public float impactForce = 30.0f;
-    public float fireRate = 1.0f;
+    public float fireRate = 0.5f;
 
     public GameObject weapon;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public AudioSource audioSource;
 
-    private float nextTimeToFire = 0.0f;
-    // Update is called once per frame
+    private float nextTimeToFire;
+
     void Update()
     {
         //if(Input.GetButtonDown("Fire1"))
@@ -22,11 +22,9 @@ public class GunScript : MonoBehaviour
         if(Input.GetMouseButton(0) && Time.time >= nextTimeToFire)
         //if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("left click");
-            //nextTimeToFire = Time.time + 1f / fireRate;
-            //nextTimeToFire = Time.time + fireRate;
-            nextTimeToFire = Time.time + 0.5f;
+            
             Shoot();
+            nextTimeToFire = Time.time + fireRate;
         }
     }
 
