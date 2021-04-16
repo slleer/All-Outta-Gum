@@ -17,6 +17,6 @@ public class CameraLookAtPlayer : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(target.transform.position.x, 40, target.transform.position.z);
+        transform.position = new Vector3(target.transform.position.x, 60, target.transform.position.z);
     }
 }
