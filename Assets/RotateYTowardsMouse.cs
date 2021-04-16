@@ -15,6 +15,7 @@ public class RotateYTowardsMouse : MonoBehaviour
         
     }
 
+    public GameObject player;
     public Vector2 screenCenter;
     public float angle;
 
@@ -23,6 +24,6 @@ public class RotateYTowardsMouse : MonoBehaviour
         angle = Mathf.Atan2((Input.mousePosition.y - (Screen.height / 2)), Input.mousePosition.x - (Screen.width / 2)) * Mathf.Rad2Deg;
         angle += 180; //needed to make angle work with unity axis system
 
-        transform.eulerAngles = new Vector3(0, -angle, 0);
+        player.transform.eulerAngles = new Vector3(0, -angle, 0);
     }
 }

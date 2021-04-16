@@ -11,12 +11,31 @@ public class CameraLookAtPlayer : MonoBehaviour
 {
     void Start()
     {
-        
+        cameraPosition.y = 60.0f;
+        //cameraY = cameraPosition.y;
     }
     public GameObject target;
+    public GameObject playerCamera;
+    public Vector3 cameraPosition;
+    public float cameraY;
+    public float scrollScale = 0.1f;
 
     void Update()
     {
-        transform.position = new Vector3(target.transform.position.x, 60, target.transform.position.z);
+        cameraPosition.x = target.transform.position.x;
+        cameraPosition.z = target.transform.position.z;
+        cameraPosition.y = UpdateCameraZoom(cameraPosition.y);
+        playerCamera.transform.position = cameraPosition;
+    }
+
+    float UpdateCameraZoom(float currentYPos)
+    {
+        float delta = -Input.mouseScrollDelta.y;
+        if (currentYPos + delta < 30.0f)
+            return 30.0f;
+        else if (currentYPos + delta > 60.0f)
+            return 60.0f;
+        else
+            return currentYPos + (delta * scrollScale);
     }
 }

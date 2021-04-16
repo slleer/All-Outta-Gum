@@ -44,6 +44,7 @@ public class GunScript : MonoBehaviour
             }
             if (hit.rigidbody != null)
             {
+                Debug.Log("rigidbody not null");
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
         }

@@ -16,48 +16,39 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public float deltaPosition = 10.0f;
-    public float jumpHeight = 5.0f;
-    public float sprintMultiplier = 1.5f;
+    public float sprintMultiplier = 1.0f;
+    public GameObject player;
+    //public GameObject playerMesh;
 
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(deltaPosition * sprintMultiplier * Vector3.forward * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(deltaPosition * sprintMultiplier * Vector3.back * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(deltaPosition * sprintMultiplier * Vector3.left * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(deltaPosition * sprintMultiplier * Vector3.right * Time.deltaTime);
-            }
+            sprintMultiplier = 3.0f;
         }
         else
-        {
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(deltaPosition * Vector3.forward * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.Translate(deltaPosition * Vector3.back * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                transform.Translate(deltaPosition * Vector3.left * Time.deltaTime);
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                transform.Translate(deltaPosition * Vector3.right * Time.deltaTime);
-            }
-        } 
+            sprintMultiplier = 1.0f;
+
+        if (Input.GetKey(KeyCode.W))
+            player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime);
+        if (Input.GetKey(KeyCode.S))
+            player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.left * Time.deltaTime);
+        if (Input.GetKey(KeyCode.A))
+            player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime);
+        if (Input.GetKey(KeyCode.D))
+            player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime);
+        //sprintMultiplier = 1.0f;
+
     }
+
+    /*void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("colliding!");
+        //if (collision.gameObject.name == "YourWallName")  // or if(gameObject.CompareTag("YourWallTag"))
+        if(collision.gameObject.layer == 9)
+        {
+            player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //player.rigidbody.velocity = Vector3.zero;
+        }
+    }*/
 }
