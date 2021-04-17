@@ -6,18 +6,19 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Target : MonoBehaviour
+public class Target : Agent
 {
-    public float health = 50.0f;
     public Canvas healthBar;
     public Image healthImage;
-    public float maxHealthConst = 5;
+    public Vector3 postion = Vector3.zero;
+
+    public float maxHealthConst = 5;  // This is the width of the image object used to represent zombies health bar. Used in calculating how much bar to display based on health
 
     public void takeDamage(float amount)
     {
         health -= amount;
 
-        healthImage.rectTransform.sizeDelta = new Vector2((health / 50.0f * maxHealthConst), 1.0f);
+        healthImage.rectTransform.sizeDelta = new Vector2((health / maxHealth * maxHealthConst), 1.0f);
         if (health <= 0)
             Die();
     }

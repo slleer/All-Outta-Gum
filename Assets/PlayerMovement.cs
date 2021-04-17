@@ -22,9 +22,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
+        // keeping this here to make sure there isn't any issues due to it missing.
+
+        
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            sprintMultiplier = 3.0f;
+            
             if (Player.inst.playerStamina > 0)
             {
                 sprintMultiplier = 3.0f;
@@ -60,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
                 player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime);
         }
         //sprintMultiplier = 1.0f;
+        
     }
 
     /*void OnCollisionEnter(Collision collision)

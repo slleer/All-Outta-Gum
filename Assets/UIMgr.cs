@@ -8,6 +8,8 @@ public class UIMgr : MonoBehaviour
 
     public Slider healthSlider;
     public Slider staminaSlider;
+    public GameObject hudPanel;
+    public GameObject startPanel;
     public Text waveTimerText;
     public Text waveCountText;
     public Text clipAmmoText;                
@@ -15,6 +17,14 @@ public class UIMgr : MonoBehaviour
     public float waveClock;
     public bool activeWave;
     public int waveCount;
+
+    public static UIMgr inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +35,7 @@ public class UIMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthSlider.value = Player.inst.playerHealth;
+        healthSlider.value = Player.inst.health;
         staminaSlider.value = Player.inst.playerStamina;
         clipAmmoText.text = string.Concat(GunScript.roundsInClip.ToString(), "/", GunScript.clipSize.ToString());
         totalAmmoText.text = Player.inst.ammoCount.ToString();
@@ -35,19 +45,25 @@ public class UIMgr : MonoBehaviour
             waveTimerText.text = formatTime(waveClock);
         }
     }
-
-    void startClock()
+    public void OnGameStart()
+    {
+        startPanel.SetActive(false);
+        UpdateWaveCount();
+        StartClock();
+    }
+    void StartClock()
     {
         activeWave = true;
         waveClock = 0.0f;
     }
-    void stopClock()
+    void StopClock()
     {
         activeWave = false;
     }
-    void updateWaveCount()
+    void UpdateWaveCount()
     {
         waveCount += 1;
+        waveCountText.text = string.Concat("Wave: ", waveCount.ToString());
 
     }
     string formatTime(float time)
