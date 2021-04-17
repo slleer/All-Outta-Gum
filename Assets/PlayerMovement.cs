@@ -25,20 +25,36 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             sprintMultiplier = 3.0f;
+            if (Input.GetKey(KeyCode.W))
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime);
+            if (Input.GetKey(KeyCode.S))
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.left * Time.deltaTime);
+            if (Input.GetKey(KeyCode.A))
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime);
+            if (Input.GetKey(KeyCode.D))
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime);
+            if(sprintMultiplier > 0)
+            {
+                Player.inst.playerStamina -= sprintMultiplier * Time.deltaTime;
+            }
         }
         else
-            sprintMultiplier = 1.0f;
-
-        if (Input.GetKey(KeyCode.W))
-            player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime);
-        if (Input.GetKey(KeyCode.S))
-            player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.left * Time.deltaTime);
-        if (Input.GetKey(KeyCode.A))
-            player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime);
-        if (Input.GetKey(KeyCode.D))
-            player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime);
+        {
+            if (Player.inst.playerStamina < Player.inst.maxStamina)
+            {
+                float deltaStamina = Player.inst.playerStamina + Time.deltaTime;
+                Player.inst.playerStamina = (deltaStamina > Player.inst.maxStamina ? Player.inst.maxStamina : deltaStamina);
+            }
+            if (Input.GetKey(KeyCode.W))
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime);
+            if (Input.GetKey(KeyCode.S))
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.left * Time.deltaTime);
+            if (Input.GetKey(KeyCode.A))
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime);
+            if (Input.GetKey(KeyCode.D))
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime);
+        }
         //sprintMultiplier = 1.0f;
-
     }
 
     /*void OnCollisionEnter(Collision collision)

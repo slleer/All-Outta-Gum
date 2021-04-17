@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputMgr : MonoBehaviour
+public class inputMgr : MonoBehaviour
 {
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -14,9 +14,9 @@ public class InputMgr : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
+                        UnityEditor.EditorApplication.isPlaying = false;
             #else
-                Application.Quit();
+                            Application.Quit();
             #endif
         }
     }
