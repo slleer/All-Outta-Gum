@@ -15,7 +15,6 @@ public class ZombieEntity : MonoBehaviour
     void Start()
     {
         speed = 8.0f;
-        turningSpeed = 2.0f;
     }
 
     // Update is called once per frame
@@ -27,7 +26,7 @@ public class ZombieEntity : MonoBehaviour
         {
             desiredHeading += 360;
         }
-        eulerRotation.y = desiredHeading * turningSpeed;
+        eulerRotation.y = desiredHeading;
         transform.localEulerAngles = eulerRotation;
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
