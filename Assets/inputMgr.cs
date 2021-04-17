@@ -36,6 +36,7 @@ public class inputMgr : MonoBehaviour
         }
         else
         {
+            sprintMultiplier = 1f;
             if (Player.inst.playerStamina < Player.inst.maxStamina)
             {
                 float deltaStamina = Player.inst.playerStamina + Time.deltaTime;
