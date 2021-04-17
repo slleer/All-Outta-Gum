@@ -12,7 +12,6 @@ public class CameraLookAtPlayer : MonoBehaviour
     void Start()
     {
         cameraPosition.y = 60.0f;
-        //cameraY = cameraPosition.y;
     }
     public GameObject target;
     public GameObject playerCamera;

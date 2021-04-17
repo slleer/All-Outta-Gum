@@ -89,6 +89,6 @@ public class GunScript : MonoBehaviour
         }
 
         GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-        Object.Destroy(impactInstant, 2f);
+        Destroy(impactInstant, 2f);
     }
 }
