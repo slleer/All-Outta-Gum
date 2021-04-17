@@ -25,6 +25,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             sprintMultiplier = 3.0f;
+            if (Player.inst.playerStamina > 0)
+            {
+                sprintMultiplier = 3.0f;
+                Player.inst.playerStamina -= sprintMultiplier * Time.deltaTime;
+                Player.inst.playerStamina = (Player.inst.playerStamina <= 0 ? 0 : Player.inst.playerStamina);
+            }
+            else
+                sprintMultiplier = 1f;
+
             if (Input.GetKey(KeyCode.W))
                 player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime);
             if (Input.GetKey(KeyCode.S))
@@ -33,10 +42,6 @@ public class PlayerMovement : MonoBehaviour
                 player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime);
             if (Input.GetKey(KeyCode.D))
                 player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime);
-            if(sprintMultiplier > 0)
-            {
-                Player.inst.playerStamina -= sprintMultiplier * Time.deltaTime;
-            }
         }
         else
         {
