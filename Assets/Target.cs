@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Target : Agent
 {
+    public float scoreModifier = 50000;
     public Canvas healthBar;
     public Image healthImage;
     public Vector3 postion = Vector3.zero;
@@ -25,6 +26,7 @@ public class Target : Agent
 
     void Die()
     {
+        Player.inst.score += scoreModifier / UIMgr.inst.waveClock;
         Destroy(gameObject);
     }
 }

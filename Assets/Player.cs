@@ -8,6 +8,7 @@ public class Player : Agent
     public float playerStamina;
     public float maxStamina;
     public int ammoCount;
+    public float score;
 
     private void Awake()
     {
@@ -24,5 +25,10 @@ public class Player : Agent
     void Update()
     {
         
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
     }
 }

@@ -8,6 +8,7 @@ public class ZombieEntity : MonoBehaviour
     public float desiredHeading;
     public float speed;
     public float turningSpeed;
+    private float damagePerSec = 1;
 
     public GameObject player;
 
@@ -17,6 +18,14 @@ public class ZombieEntity : MonoBehaviour
         speed = 8.0f;
     }
 
+    void OnCollisionStay(Collision collision)
+    {
+        //Debug.Log(collision.gameObject.name);
+        if(collision.gameObject.name == "PlayerMesh")
+        {
+            Player.inst.TakeDamage(damagePerSec * Time.deltaTime);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -37,4 +46,5 @@ public class ZombieEntity : MonoBehaviour
         Vector3 diff = moveTo - currentPosition;
         return -(Mathf.Atan2(diff.z, diff.x) * Mathf.Rad2Deg + 270);
     }
+
 }

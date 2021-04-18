@@ -25,6 +25,13 @@ public class GunScript : MonoBehaviour
 
     private float nextTimeToFire;
 
+    public static GunScript inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+
     private void Start()
     {
         nextTimeToFire = Time.time + 0.1f;
@@ -53,7 +60,18 @@ public class GunScript : MonoBehaviour
             }
         }
     }
-
+    public void Reload()
+    {
+        if (clipSize <= Player.inst.ammoCount)
+        {
+            roundsInClip = clipSize;
+            delay += reloadRate;
+        }
+        else
+        {
+            roundsInClip = Player.inst.ammoCount;
+        }
+    }
     void Shoot()
     {
         muzzleFlash.Play();
@@ -78,15 +96,7 @@ public class GunScript : MonoBehaviour
         roundsInClip -= 1;
         if(roundsInClip < 1 && Player.inst.ammoCount > 0)
         {
-            if (clipSize <= Player.inst.ammoCount)
-            {
-                roundsInClip = clipSize;
-                delay += reloadRate;
-            }
-            else
-            {
-                roundsInClip = Player.inst.ammoCount % clipSize;
-            }
+            Reload();
         }
 
         GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));

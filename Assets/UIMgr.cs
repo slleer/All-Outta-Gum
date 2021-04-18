@@ -10,10 +10,12 @@ public class UIMgr : MonoBehaviour
     public Slider staminaSlider;
     public GameObject hudPanel;
     public GameObject startPanel;
+    public GameObject gameOverPanel;
     public Text waveTimerText;
     public Text waveCountText;
     public Text clipAmmoText;                
-    public Text totalAmmoText;               
+    public Text totalAmmoText;
+    public Text scoreText;
     public float waveClock;
     public bool activeWave;
     public int waveCount;
@@ -30,6 +32,7 @@ public class UIMgr : MonoBehaviour
     {
         waveCount = 0;
         waveCountText.text = string.Concat("Wave: ", waveCount.ToString());
+        gameOverPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,7 +45,7 @@ public class UIMgr : MonoBehaviour
         if(activeWave)
         {
             waveClock += Time.deltaTime;
-            waveTimerText.text = formatTime(waveClock);
+            waveTimerText.text = FormatTime(waveClock);
         }
     }
     public void OnGameStart()
@@ -66,7 +69,22 @@ public class UIMgr : MonoBehaviour
         waveCountText.text = string.Concat("Wave: ", waveCount.ToString());
 
     }
-    string formatTime(float time)
+    public void OnGameOver()
+    {
+        gameOverPanel.SetActive(true);
+        scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
+    }
+    //called to reset game view
+    public void NewGame()
+    {
+        gameOverPanel.SetActive(false);
+        Player.inst.health = Player.inst.maxHealth;
+        waveCount = 0;
+        UpdateWaveCount();
+        StartClock();
+    }
+    // Format time for wave timer count
+    string FormatTime(float time)
     {
         string time_as_str = "";
         int minutes = (int)time / 60;
