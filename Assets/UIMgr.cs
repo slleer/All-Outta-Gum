@@ -11,6 +11,7 @@ public class UIMgr : MonoBehaviour
     public GameObject hudPanel;
     public GameObject startPanel;
     public GameObject gameOverPanel;
+    public GameObject outOfAmmoPanel;
     public Text waveTimerText;
     public Text waveCountText;
     public Text clipAmmoText;                

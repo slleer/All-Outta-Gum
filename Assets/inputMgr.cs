@@ -13,10 +13,7 @@ public class inputMgr : MonoBehaviour
     public Player player;
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
-        {
-            GunScript.inst.Reload();
-        }
+
 
         if (Input.GetKey(KeyCode.LeftShift))
         {

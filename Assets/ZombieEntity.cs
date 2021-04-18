@@ -8,7 +8,7 @@ public class ZombieEntity : MonoBehaviour
     public float desiredHeading;
     public float speed;
     public float turningSpeed;
-    private float damagePerSec = 1;
+    private float damagePerSec;
 
     //public Vector3 playerPosition = ZombieManager.inst.playerPosition;
 
@@ -16,6 +16,7 @@ public class ZombieEntity : MonoBehaviour
     void Start()
     {
         speed = 8.0f;
+        damagePerSec = 1;
     }
 
     void OnCollisionStay(Collision collision)

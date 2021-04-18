@@ -16,7 +16,7 @@ public class GunScript : MonoBehaviour
 
     public static int clipSize;           //Have these declared as static so I can call them from UIMgr
     public static int roundsInClip;       //Keep as static for now
-    public int maxAmmo;
+    private int maxAmmo;
 
     public GameObject weapon;
     public ParticleSystem muzzleFlash;
@@ -30,10 +30,12 @@ public class GunScript : MonoBehaviour
 
     private void Start()
     {
-        nextTimeToFire = Time.time + 0.1f;
-        clipSize = 2;
+        nextTimeToFire = Time.time + 0.2f;
+        clipSize = 8;
         roundsInClip = clipSize;
-        maxAmmo = 48; // need to think about a way to represent infinit ammo for base gun, either here or in Player script
+        maxAmmo = 48;
+        Player.inst.ammoCount = maxAmmo;  
+        // need to think about a way to represent infinit ammo for base gun, either here or in Player script
         //put some code here to initialize clipSize and maxAmmo based on the weapon. Should also do this for damage, range, etc.
         //Probably make a gun class that will represent the different guns, include a gun class object in this script, initialized through the editor
         //and add a function here that allows to 'switch' weapons.
@@ -57,6 +59,7 @@ public class GunScript : MonoBehaviour
             else
             {
                 //maybe find a sound effect for out of ammo or display text on screen.
+                //Reload();
             }
         }
 
@@ -64,18 +67,7 @@ public class GunScript : MonoBehaviour
         //if(roundsInClip == 0)
             //Reload();
     }
-    public void Reload()
-    {
-        if (clipSize <= Player.inst.ammoCount)
-        {
-            roundsInClip = clipSize;
-            delay += reloadRate;
-        }
-        else
-        {
-            roundsInClip = Player.inst.ammoCount;
-        }
-    }
+
     void Shoot()
     {
         muzzleFlash.Play();
@@ -96,22 +88,9 @@ public class GunScript : MonoBehaviour
                 //hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
         }
-        //Player.inst.ammoCount -= 1;
+        
         roundsInClip -= 1;
-        /*if(roundsInClip < 1 && Player.inst.ammoCount > 0)
-        {
-            if (clipSize <= Player.inst.ammoCount)
-            {
-                roundsInClip = clipSize;
-                delay += reloadRate;
-                reloadSound.PlayDelayed(1.0f);
-            }
-            else
-            {
-                roundsInClip = Player.inst.ammoCount % clipSize;
-            }
-        }*/
-
+            
         GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactInstant, 2f);
     }
@@ -122,23 +101,41 @@ public class GunScript : MonoBehaviour
         //if the player has ammo in reserve
         if (Player.inst.ammoCount > 0)
         {
+            UIMgr.inst.outOfAmmoPanel.SetActive(false);
             nextTimeToFire += reloadRate;
             reloadSound.Play();
             //reload is successful
 
-            //two scenarios, one is there is enough ammo to fill clip
-            if (Player.inst.ammoCount >= clipSize)
-            {
-                roundsInClip = clipSize;
-                Player.inst.ammoCount -= clipSize;
-            }
-            //else not enough ammo to fill clip
-            else
-            {
-                roundsInClip = Player.inst.ammoCount;
-                Player.inst.ammoCount -= roundsInClip;
-            }
+            if(roundsInClip > 0){
+                //two scenarios, one is there is enough ammo to fill clip
+                if (Player.inst.ammoCount >= clipSize)
+                {
+                    Player.inst.ammoCount -= (clipSize - roundsInClip);
+                    roundsInClip = clipSize;
+                }
+                //else not enough ammo to fill clip
+                else
+                {
+                    Player.inst.ammoCount = (clipSize - roundsInClip);
+                    roundsInClip = (Player.inst.ammoCount + roundsInClip < clipSize ? Player.inst.ammoCount + roundsInClip : clipSize);
+                }
 
+            }
+            else {
+                //two scenarios, one is there is enough ammo to fill clip
+                if (Player.inst.ammoCount >= clipSize)
+                {
+                    roundsInClip = clipSize;
+                    Player.inst.ammoCount -= clipSize;
+                }
+                //else not enough ammo to fill clip
+                else
+                {
+                    roundsInClip = Player.inst.ammoCount;
+                    Player.inst.ammoCount -= roundsInClip;
+                }
+
+            }
 
             //reload
             reload = false;
@@ -146,6 +143,8 @@ public class GunScript : MonoBehaviour
         else
         {
             //Display to HUD "OUT OF AMMMO"
+            UIMgr.inst.outOfAmmoPanel.SetActive(true);
+            reload = false;
         }
     }
 }
