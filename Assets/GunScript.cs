@@ -31,7 +31,7 @@ public class GunScript : MonoBehaviour
     private void Start()
     {
         nextTimeToFire = Time.time + 0.1f;
-        clipSize = 2;
+        clipSize = 8;
         roundsInClip = clipSize;
         maxAmmo = 48; // need to think about a way to represent infinit ammo for base gun, either here or in Player script
         //put some code here to initialize clipSize and maxAmmo based on the weapon. Should also do this for damage, range, etc.
