@@ -22,7 +22,7 @@ public class ZombieEntity : MonoBehaviour
     void OnCollisionStay(Collision collision)
     {
         //Debug.Log(collision.gameObject.name);
-        if(collision.gameObject.name == "PlayerMesh")
+        if(collision.gameObject.layer == 11)
         {
             Player.inst.TakeDamage(damagePerSec * Time.deltaTime);
         }

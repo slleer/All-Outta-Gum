@@ -62,10 +62,6 @@ public class GunScript : MonoBehaviour
                 //Reload();
             }
         }
-
-        //dont want to check for left mouse press before reloading
-        //if(roundsInClip == 0)
-            //Reload();
     }
 
     void Shoot()

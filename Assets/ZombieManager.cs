@@ -15,22 +15,50 @@ public class ZombieManager : MonoBehaviour
 
     }
 
-    public float spawnTimer = 3.0f;
+    public float spawnTimer = 1.5f;
     public GameObject regularZombie;
-    public Vector3 spawnPoint;
+
+    public bool waveFinishedSpawning = false;
+    public int numOfZombiesInWave = 8;
+    public int zombiesSpawnedSoFar = 0;
+    //final spawnPoint variable
+    Vector3 spawnPoint;
     // Update is called once per frame
     void Update()
     {
-        //spawn zombies every 3 seconds
-        if (spawnTimer > 0)
+        if (waveFinishedSpawning == false)
         {
-            spawnTimer -= Time.deltaTime;
+                //spawn zombies every 1.5 seconds
+                if (spawnTimer > 0)
+                {
+                    spawnTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    spawnTimer = 1.5f;
+                    //instantiate zombie type at spawnPoint[random] with rotation identity
+                    GameObject zombieInstant = Instantiate(regularZombie, spawnPoints[ChooseRandomSpawnIndex()], Quaternion.identity);
+                    zombiesSpawnedSoFar++;
+                }
         }
-        else
+        if(numOfZombiesInWave == zombiesSpawnedSoFar)
         {
-            spawnTimer = 3.0f;
-            //instantiate zombie
-            GameObject zombieInstant = Instantiate(regularZombie, spawnPoint, Quaternion.identity);
+            waveFinishedSpawning = true;
         }
+        
+    }
+
+    //spawnPoint array
+    public Vector3[] spawnPoints = new[] {
+        new Vector3(61.6f, 2.6f, 0.38f),    //spawnPointNorth
+        new Vector3(0f, 2.6f, -56.4f),    //spawnPointEast
+        new Vector3(-56.4f, 2.6f, 1.13f),    //spawnPointSouth
+        new Vector3(0f, 2.6f, 58.6f) };  //spawnPointWest
+
+    //choose random index of array spawnPoints
+    int ChooseRandomSpawnIndex()
+    {
+        int index = Random.Range(0, spawnPoints.Length);
+        return index;
     }
 }
