@@ -30,11 +30,11 @@ public class GunScript : MonoBehaviour
 
     private void Start()
     {
-        nextTimeToFire = Time.time + 0.2f;
+        nextTimeToFire = Time.time + 0.1f;
         clipSize = 8;
         roundsInClip = clipSize;
         maxAmmo = 48;
-        Player.inst.ammoCount = maxAmmo;  
+        Player.inst.ammoCount = maxAmmo;
         // need to think about a way to represent infinit ammo for base gun, either here or in Player script
         //put some code here to initialize clipSize and maxAmmo based on the weapon. Should also do this for damage, range, etc.
         //Probably make a gun class that will represent the different guns, include a gun class object in this script, initialized through the editor
@@ -88,9 +88,9 @@ public class GunScript : MonoBehaviour
                 //hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
         }
-        
+
         roundsInClip -= 1;
-            
+
         GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impactInstant, 2f);
     }
