@@ -12,14 +12,12 @@ public class ZombieManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //spawnPoint = new Vector3(-13.0f, 2.5f, -40.0f);
-        //zombieTransform.
+
     }
 
     public float spawnTimer = 3.0f;
     public GameObject regularZombie;
-    public Transform zombieTransform;
-    //public Vector3 spawnPoint;
+    public Vector3 spawnPoint;
     // Update is called once per frame
     void Update()
     {
@@ -32,8 +30,7 @@ public class ZombieManager : MonoBehaviour
         {
             spawnTimer = 3.0f;
             //instantiate zombie
-            //GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            //GameObject zombieInstant = Instantiate(regularZombie, spawnPoint);
+            GameObject zombieInstant = Instantiate(regularZombie, spawnPoint, Quaternion.identity);
         }
     }
 }

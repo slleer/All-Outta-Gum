@@ -10,7 +10,7 @@ public class ZombieEntity : MonoBehaviour
     public float turningSpeed;
     private float damagePerSec = 1;
 
-    public GameObject player;
+    //public Vector3 playerPosition = ZombieManager.inst.playerPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,8 @@ public class ZombieEntity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        desiredPosition = player.transform.position;
+        //desiredPosition = player.transform.position;
+        desiredPosition = Player.inst.transform.position;
         desiredHeading = CalculateAngle(desiredPosition, transform.position);
         while (desiredHeading < 0)
         {
