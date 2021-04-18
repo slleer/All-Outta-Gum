@@ -22,6 +22,7 @@ public class GunScript : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public AudioSource audioSource;
+    public AudioSource reloadSound;
 
     private float nextTimeToFire;
 
