@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2236578022844974084}
   - component: {fileID: 8176644854800227681}
   - component: {fileID: 2946425812826394966}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BackgroundPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 348651654682446651}
   - component: {fileID: 1952300963115899042}
   - component: {fileID: 7497529463741458363}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RegularZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,6 @@ MonoBehaviour:
   desiredHeading: 0
   speed: 0
   turningSpeed: 0
-  player: {fileID: 0}
   eulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &4752556599726828486
 GameObject:
@@ -238,7 +237,7 @@ GameObject:
   - component: {fileID: 3100693460408091089}
   - component: {fileID: 5466914633464240770}
   - component: {fileID: 9012989509904714382}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +310,7 @@ GameObject:
   - component: {fileID: 2609595469296129464}
   - component: {fileID: 8940140076201510465}
   - component: {fileID: 5888939902529783993}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
