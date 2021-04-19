@@ -11,6 +11,7 @@ public class Target : Agent
     public float scoreModifier = 50000;
     public Canvas healthBar;
     public Image healthImage;
+    public int ID;
     public Vector3 postion = Vector3.zero;
 
     public float maxHealthConst = 5;  // This is the width of the image object used to represent zombies health bar. Used in calculating how much bar to display based on health
@@ -27,6 +28,7 @@ public class Target : Agent
     void Die()
     {
         Player.inst.score += scoreModifier / UIMgr.inst.waveClock;
+        ZombieManager.inst.zombies.Remove(gameObject);
         Destroy(gameObject);
     }
 }

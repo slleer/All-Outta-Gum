@@ -79,7 +79,6 @@ public class UIMgr : MonoBehaviour
     public void NewGame()
     {
         gameOverPanel.SetActive(false);
-        Player.inst.health = Player.inst.maxHealth;
         waveCount = 0;
         UpdateWaveCount();
         StartClock();

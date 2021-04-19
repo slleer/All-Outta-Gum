@@ -14,7 +14,20 @@ public class inputMgr : MonoBehaviour
     void Update()
     {
 
-
+        if(Input.GetKeyUp(KeyCode.Tab))
+        {
+            if(UIMgr.inst.gameOverPanel.activeSelf)
+            {
+                Time.timeScale = 1;
+                UIMgr.inst.gameOverPanel.SetActive(false);
+                UIMgr.inst.scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
+            }
+            else
+            {
+                Time.timeScale = 0;
+                UIMgr.inst.OnGameOver();
+            }
+        }
         if (Input.GetKey(KeyCode.LeftShift))
         {
             if (Player.inst.playerStamina > 0)

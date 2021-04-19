@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-    public float damage = 10.0f;
+    public float damage = 20.0f;
     public float range = 100.0f;
     public float impactForce = 30.0f;
     public float fireRate = 0.5f;

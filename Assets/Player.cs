@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : Agent
 {
     public static Player inst;
+
     public float playerStamina;
     public float maxStamina;
     public int ammoCount;
@@ -20,7 +21,13 @@ public class Player : Agent
         health = maxHealth;
         playerStamina = maxStamina;
     }
-
+    public void ResetPlayer()
+    {
+        health = maxHealth;
+        playerStamina = maxStamina;
+        ammoCount = 43; // need to get the weapon manager going to get max ammo from gun for ammoCount value.
+        score = 0;
+    }
     // Update is called once per frame
     void Update()
     {
