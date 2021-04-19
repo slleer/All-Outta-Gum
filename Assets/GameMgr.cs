@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameMgr : MonoBehaviour
 {
     public static GameMgr inst;
+    public bool betweenWave;
     public float coolDown = 5.0f;
     // Start is called before the first frame update
     private void Awake()
@@ -14,6 +15,7 @@ public class GameMgr : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0;
+        betweenWave = false;
     }
 
     // Update is called once per frame
@@ -28,10 +30,14 @@ public class GameMgr : MonoBehaviour
         {
             if (coolDown < 0)
             {
-                Debug.Log("Wave cleared. Gonna display this out later. ");
-                //Player.inst.score += 10000;
-                Time.timeScale = 0;
-                UIMgr.inst.OnGameOver();
+                if(!betweenWave)
+                {
+                    Debug.Log("Wave cleared. Gonna display this out later. ");
+                    Player.inst.score += (Player.inst.score*3)/UIMgr.inst.waveClock;
+                    Time.timeScale = 0;
+                    UIMgr.inst.OnGameOver();
+                    betweenWave = true;
+                }
             }
             coolDown -= Time.deltaTime;
         }

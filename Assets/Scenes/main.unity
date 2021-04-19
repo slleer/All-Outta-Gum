@@ -1405,9 +1405,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82cf84d1328f9734593067e131930be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zombies: []
   spawnTimer: 3
   regularZombie: {fileID: 3083993462383430060, guid: ea5f15c4e2e650e44869e8411208301b,
     type: 3}
+  waveDefeated: 0
   waveFinishedSpawning: 0
   numOfZombiesInWave: 8
   zombiesSpawnedSoFar: 0
@@ -2465,9 +2467,10 @@ MonoBehaviour:
   minSpeed: 0
   heading: 0
   desiredHeading: 0
-  scoreModifier: 50000
+  scoreModifier: 5000
   healthBar: {fileID: 1906768907}
   healthImage: {fileID: 1536893882}
+  ID: 0
   postion: {x: 0, y: 0, z: 0}
   maxHealthConst: 5
 --- !u!65 &962219499
@@ -2557,6 +2560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3b486ac775cad4ebaae1626266fe26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  betweenWave: 0
+  coolDown: 5
 --- !u!4 &962852623
 Transform:
   m_ObjectHideFlags: 0
@@ -4457,7 +4462,7 @@ MonoBehaviour:
   damage: 10
   range: 100
   impactForce: 30
-  fireRate: 0.5
+  fireRate: 0.1
   reloadRate: 1
   delay: 0
   weapon: {fileID: 951840999}
