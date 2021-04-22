@@ -8,6 +8,7 @@ public class ZombieManager : MonoBehaviour
     public List<GameObject> zombies = new List<GameObject>();
     public float spawnTimer = 1.5f;
     public GameObject regularZombie;
+    public float waveTime;
 
     public bool waveDefeated;
     public bool waveFinishedSpawning;
@@ -26,6 +27,7 @@ public class ZombieManager : MonoBehaviour
         waveFinishedSpawning = false;
         numOfZombiesInWave = 8;
         zombiesSpawnedSoFar = 0;
+        waveTime = 30;
     }
 
     // Update is called once per frame

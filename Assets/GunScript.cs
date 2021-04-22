@@ -59,7 +59,7 @@ public class GunScript : MonoBehaviour
             else
             {
                 //maybe find a sound effect for out of ammo or display text on screen.
-                //Reload();
+                Reload();
             }
         }
     }

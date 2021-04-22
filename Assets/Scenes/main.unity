@@ -1409,6 +1409,7 @@ MonoBehaviour:
   spawnTimer: 3
   regularZombie: {fileID: 3083993462383430060, guid: ea5f15c4e2e650e44869e8411208301b,
     type: 3}
+  waveTime: 0
   waveDefeated: 0
   waveFinishedSpawning: 0
   numOfZombiesInWave: 8
@@ -4462,7 +4463,7 @@ MonoBehaviour:
   damage: 10
   range: 100
   impactForce: 30
-  fireRate: 0.1
+  fireRate: 1
   reloadRate: 1
   delay: 0
   weapon: {fileID: 951840999}
