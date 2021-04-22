@@ -13,12 +13,8 @@ public class ZombieManager : MonoBehaviour
     public bool waveFinishedSpawning;
     public int numOfZombiesInWave;
     public int zombiesSpawnedSoFar;
-    //spawnPoint array
-    public Vector3[] spawnPoints = new[] {
-        new Vector3(61.6f, 2.6f, 0.38f),    //spawnPointNorth
-        new Vector3(0f, 2.6f, -56.4f),    //spawnPointEast
-        new Vector3(-56.4f, 2.6f, 1.13f),    //spawnPointSouth
-        new Vector3(0f, 2.6f, 58.6f) };  //spawnPointWest
+
+    public List<Transform> spawnPoints;
 
     private void Awake()
     {
@@ -48,7 +44,8 @@ public class ZombieManager : MonoBehaviour
                 spawnTimer = 1.5f;
                 //instantiate zombie type at spawnPoint[random] with rotation identity
                 //add instance of zombie to List of GameObjects
-                zombies.Add(Instantiate(regularZombie, spawnPoints[Random.Range(0, spawnPoints.Length)], Quaternion.identity));
+
+                zombies.Add(Instantiate(regularZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
                 zombiesSpawnedSoFar++;
             }
         }
@@ -70,10 +67,4 @@ public class ZombieManager : MonoBehaviour
         numOfZombiesInWave = 8;
         zombiesSpawnedSoFar = 0;
     }
-    //choose random index of array spawnPoints
-  //  int ChooseRandomSpawnIndex()
-  //  {
-  //      int index = Random.Range(0, spawnPoints.Length);   
-  //      return index;
-  //  }
 }
