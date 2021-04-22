@@ -14,8 +14,8 @@ public class GameMgr : MonoBehaviour
     }
     void Start()
     {
-        Time.timeScale = 0;
-        betweenWave = false;
+        //Time.timeScale = 0;
+        //betweenWave = false;
     }
 
     // Update is called once per frame
