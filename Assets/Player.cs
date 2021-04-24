@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Agent
+//public class Player : Agent
+public class Player : MonoBehaviour
 {
     public static Player inst;
+
+    public float health = 50.0f;
+    public float maxHealth = 50.0f;
 
     public float playerStamina;
     public float maxStamina;

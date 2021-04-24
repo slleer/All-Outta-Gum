@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class inputMgr : MonoBehaviour
+public class InputMgr : MonoBehaviour
 {
     void Start()
     {
@@ -40,13 +40,14 @@ public class inputMgr : MonoBehaviour
                 sprintMultiplier = 1f;
 
             if (Input.GetKey(KeyCode.W))
-                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime);
+                //player.transform.Translate(Vector3.forward,)
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime, Space.World);
             if (Input.GetKey(KeyCode.S))
-                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.left * Time.deltaTime);
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime, Space.World);
             if (Input.GetKey(KeyCode.A))
-                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime);
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.left * Time.deltaTime, Space.World);
             if (Input.GetKey(KeyCode.D))
-                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime);
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime, Space.World);
         }
         else
         {
@@ -57,13 +58,13 @@ public class inputMgr : MonoBehaviour
                 Player.inst.playerStamina = (deltaStamina > Player.inst.maxStamina ? Player.inst.maxStamina : deltaStamina);
             }
             if (Input.GetKey(KeyCode.W))
-                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime);
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime, Space.World);
             if (Input.GetKey(KeyCode.S))
-                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.left * Time.deltaTime);
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime, Space.World);
             if (Input.GetKey(KeyCode.A))
-                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.forward * Time.deltaTime);
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.left * Time.deltaTime, Space.World);
             if (Input.GetKey(KeyCode.D))
-                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.back * Time.deltaTime);
+                player.transform.Translate(sprintMultiplier * deltaPosition * Vector3.right * Time.deltaTime, Space.World);
         }
         if (Input.GetKey(KeyCode.Escape))
         {

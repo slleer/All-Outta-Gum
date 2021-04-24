@@ -34,7 +34,7 @@ public class ZombieEntity : MonoBehaviour
         desiredPosition = Player.inst.transform.position;
         desiredHeading = CalculateAngle(desiredPosition, transform.position);
         while (desiredHeading < 0)
-        {
+        { 
             desiredHeading += 360;
         }
         eulerRotation.y = desiredHeading;
