@@ -742,12 +742,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348353927}
   m_CullTransparentMesh: 0
---- !u!1 &359106067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1849736199912346, guid: e332982425ee2ec48b168979bb7b43f5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1357253088}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &359106070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4283527512771772, guid: e332982425ee2ec48b168979bb7b43f5,
@@ -1567,13 +1561,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 75
   maxHealth: 75
-  position: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  desiredSpeed: 0
-  maxSpeed: 0
-  minSpeed: 0
-  heading: 0
-  desiredHeading: 0
   scoreModifier: 50000
   healthBar: {fileID: 1331281316}
   healthImage: {fileID: 226050568}
@@ -3443,8 +3430,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1621932534}
   - component: {fileID: 1621932535}
-  - component: {fileID: 1621932536}
-  - component: {fileID: 1621932538}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -3473,46 +3458,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621932533}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5681dd828133a74faeaff5a124f299a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deltaPosition: 10
-  sprintMultiplier: 1
-  player: {fileID: 0}
---- !u!114 &1621932536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621932533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b4c25c3d28b7f543b115729a08e91c8, type: 3}
+  m_Script: {fileID: 11500000, guid: fa56c0b764417dc4ebb5c8eacc895ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 359106067}
-  playerCamera: {fileID: 1313989896}
-  cameraPosition: {x: 0, y: 0, z: 0}
-  cameraY: 0
-  scrollScale: 1
---- !u!114 &1621932538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621932533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3316771c37678ed48bd6b576bb8f31c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 359106067}
-  screenCenter: {x: 0, y: 0}
-  angle: 0
+  player: {fileID: 1739682342}
+  playerCamera: {fileID: 1313989897}
 --- !u!4 &1630364312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1055592728584207538, guid: aa970db7f784def4ba3d4779f66ef65b,
@@ -3717,13 +3669,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   maxHealth: 10
-  position: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  desiredSpeed: 0
-  maxSpeed: 0
-  minSpeed: 0
-  heading: 0
-  desiredHeading: 0
   playerStamina: 0
   maxStamina: 10
   ammoCount: 1776
