@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4932140778729472}
+  - component: {fileID: 114815021972794994}
+  - component: {fileID: 114149960372036578}
   - component: {fileID: 33368783971819170}
   - component: {fileID: 23359314820454554}
-  - component: {fileID: 114149960372036578}
-  - component: {fileID: 114817081427109822}
   - component: {fileID: 54947026726310058}
   - component: {fileID: 2671546673920089799}
   m_Layer: 10
@@ -37,6 +37,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114815021972794994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965410809269166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d06edece7753a409821c86907f7455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  turningSpeed: 0
+  damagePerSecond: 1
+--- !u!114 &114149960372036578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965410809269166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27550358e6c2a0f4c955a0dfeb477499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  maxHealth: 50
+  scoreModifier: 50000
+  healthBar: {fileID: 5034580595947495117}
+  healthImage: {fileID: 5034580596022025702}
+  ID: 0
+  postion: {x: 0, y: 0, z: 0}
+  maxHealthConst: 5
 --- !u!33 &33368783971819170
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -82,50 +117,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &114149960372036578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965410809269166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27550358e6c2a0f4c955a0dfeb477499, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  maxHealth: 50
-  position: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  desiredSpeed: 0
-  maxSpeed: 0
-  minSpeed: 0
-  heading: 0
-  desiredHeading: 0
-  scoreModifier: 50000
-  healthBar: {fileID: 5034580595947495117}
-  healthImage: {fileID: 5034580596022025702}
-  ID: 0
-  postion: {x: 0, y: 0, z: 0}
-  maxHealthConst: 5
---- !u!114 &114817081427109822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965410809269166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c28ce59e5f760484f86252dc8c6c6195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desiredPosition: {x: 0, y: 0, z: 0}
-  desiredHeading: 0
-  speed: 0
-  turningSpeed: 0
-  eulerRotation: {x: 0, y: 0, z: 0}
 --- !u!54 &54947026726310058
 Rigidbody:
   m_ObjectHideFlags: 0

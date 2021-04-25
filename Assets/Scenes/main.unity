@@ -2876,13 +2876,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313989896}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: -0.5}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 60, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 90, y: -270, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!81 &1313989898
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3599,7 +3599,7 @@ MonoBehaviour:
   range: 100
   impactForce: 30
   fireRate: 0.18
-  reloadRate: 0
+  reloadRate: 1
   delay: 0
   weapon: {fileID: 1695038980}
   muzzleFlash: {fileID: 1891070721}
@@ -3669,8 +3669,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   maxHealth: 10
-  playerStamina: 0
+  speed: 12
+  playerStamina: 10
   maxStamina: 10
+  staminaRegenPerSecond: 1
+  regenDelay: 1
+  staminaDrainPerSecond: 2
+  speedMultiplier: 1
+  sprintMultiplier: 2
   ammoCount: 1776
   score: 0
 --- !u!4 &1739682342
@@ -8898,6 +8904,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77efeebf1a9f1554fa01f278b729857f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deltaPosition: 10
-  sprintMultiplier: 1
   player: {fileID: 1739682341}

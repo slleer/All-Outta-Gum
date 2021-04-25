@@ -1,7 +1,7 @@
 ﻿/*
- * FileName: Target.cs
- * Purpose: Implement basic health and damage scripts
- * Date: 4/14/21                                        */
+ * Filename: Target.cs
+ * Purpose: Implement health and damage
+ * Date: 4/14/21                        */
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +18,7 @@ public class Target : MonoBehaviour
 
     public float maxHealthConst = 5;  // This is the width of the image object used to represent zombies health bar. Used in calculating how much bar to display based on health
 
-    public void takeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
 
@@ -30,7 +30,7 @@ public class Target : MonoBehaviour
     void Die()
     {
         Player.inst.score += scoreModifier / UIMgr.inst.waveClock;
-        ZombieManager.inst.zombies.Remove(gameObject);
+        ZombieMgr.inst.zombies.Remove(gameObject);
         Destroy(gameObject);
     }
 }

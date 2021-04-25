@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿/*
+ * Filename : ZombieMgr.cs
+ * Purpose  : Spawn zombies and handle zombie logic
+ * Date     : 4/24/21                                                           */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieManager : MonoBehaviour
+public class ZombieMgr : MonoBehaviour
 {
-    public static ZombieManager inst;
+    public static ZombieMgr inst;
     public List<GameObject> zombies = new List<GameObject>();
     public float spawnTimer = 1.5f;
     public GameObject regularZombie;

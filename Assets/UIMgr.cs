@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+ * Filename : UIMgr.cs
+ * Purpose  : UI connection to game
+ * Date     : 4/24/21                                                           */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

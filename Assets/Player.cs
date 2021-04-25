@@ -1,20 +1,30 @@
-﻿using System.Collections;
+﻿/*
+ * Filename : Player.cs
+ * Purpose  : Hold player stats and values
+ * Date     : 4/24/21                                                           */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//public class Player : Agent
 public class Player : MonoBehaviour
 {
-    public static Player inst;
-
-    public float health = 50.0f;
+    public float health;
     public float maxHealth = 50.0f;
 
+    public float speed;
     public float playerStamina;
     public float maxStamina;
+    public float staminaRegenPerSecond;
+    public float regenDelay;
+    public float staminaDrainPerSecond;
+    public float speedMultiplier;
+    public float sprintMultiplier;
+
     public int ammoCount;
     public float score;
 
+    public static Player inst;
     private void Awake()
     {
         inst = this;

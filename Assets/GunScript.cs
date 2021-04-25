@@ -1,6 +1,6 @@
 ﻿/*
- * FileName: GunScript.cs
- * Purpose: Implement basic gun simulation
+ * Filename: GunScript.cs
+ * Purpose: Implement gun simulation
  * Date: 4/14/21                                        */
 
 using UnityEngine;
@@ -76,7 +76,7 @@ public class GunScript : MonoBehaviour
             Target target = hit.transform.GetComponent<Target>();
             if (target != null)
             {
-                target.takeDamage(damage);
+                target.TakeDamage(damage);
             }
             if (hit.rigidbody != null) //section used for adding force to rigidbodies on hit ex. bullet impact physics
             {

@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * Filename : GameMgr.cs
+ * Purpose  : Manage waves, time, and game start/stop
+ * Date     : 4/24/21                                                           */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,7 +30,7 @@ public class GameMgr : MonoBehaviour
             Time.timeScale = 0;
             UIMgr.inst.OnGameOver();
         }
-        if(ZombieManager.inst.waveFinishedSpawning && ZombieManager.inst.zombies.Count <= 0)
+        if(ZombieMgr.inst.waveFinishedSpawning && ZombieMgr.inst.zombies.Count <= 0)
         {
             if (coolDown < 0)
             {
@@ -57,7 +61,7 @@ public class GameMgr : MonoBehaviour
         Debug.Log("NewGame");
         UIMgr.inst.NewGame();
         Player.inst.ResetPlayer();
-        ZombieManager.inst.ResetScene();
+        ZombieMgr.inst.ResetScene();
     }
     public void QuitGame()
     {

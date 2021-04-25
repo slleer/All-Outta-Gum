@@ -1,23 +1,28 @@
-﻿using System.Collections;
+﻿/*
+ * Filename : PlayerMgr.cs
+ * Purpose  : Handle player rotation to mouse, handle camera locking to player
+ * Date     : 4/24/21                                                           */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerMgr : MonoBehaviour
 {
     public Transform player;
     public Transform playerCamera;
+
     float angle;
     Vector3 cameraPosition;
     readonly float scrollScale = 2f;
 
-    //starting y position = 70.0f
     void Start()
     {
-        cameraPosition.y = 70.0f;
+        cameraPosition.y = 70.0f; //starting y position = 70.0f
     }
 
-    /* Rotate player Y towards mouse
-     * Update camera transform to stay locked on player */ 
+    // Rotate player Y towards mouse
+    // Update camera transform to stay locked on player
     void Update()
     {
         //rotate Y towards mouse
