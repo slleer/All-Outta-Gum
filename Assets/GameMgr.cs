@@ -5,13 +5,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMgr : MonoBehaviour
 {
     public static GameMgr inst;
     public bool betweenWave;
     public float coolDown = 5.0f;
-    // Start is called before the first frame update
+
     private void Awake()
     {
         inst = this;
@@ -22,7 +23,6 @@ public class GameMgr : MonoBehaviour
         betweenWave = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Player.inst.health <= 0)
@@ -56,12 +56,8 @@ public class GameMgr : MonoBehaviour
     }
     public void NewGame()
     {
-        //Initiate wave somehow here
-        Time.timeScale = 1;
-        Debug.Log("NewGame");
-        UIMgr.inst.NewGame();
-        Player.inst.ResetPlayer();
-        ZombieMgr.inst.ResetScene();
+        //reset scene completely
+        SceneManager.LoadScene("main");
     }
     public void QuitGame()
     {

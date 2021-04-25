@@ -18,7 +18,8 @@ public class Zombie : MonoBehaviour
     //set these in Unity Editor
     public float speed;
     public float turningSpeed;
-    public float damagePerSecond;
+    public float playerDamagePerSecond;
+    public float objectDamagePerSecond;
 
     //update position using move
     private void Update()
@@ -27,12 +28,10 @@ public class Zombie : MonoBehaviour
     }
 
     //on collision with player, attack player
+    //on collision with physics object, attack physics object
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.layer == 11)
-        {
-            Attack(); //function needed for future animations
-        }
+        Attack(collision);
     }
 
     public void Move()
@@ -48,9 +47,12 @@ public class Zombie : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    public void Attack()
+    public void Attack(Collision collision)
     {
-        Player.inst.TakeDamage(damagePerSecond * Time.deltaTime);
+        if (collision.gameObject.layer == 11)
+            Player.inst.TakeDamage(playerDamagePerSecond * Time.deltaTime);
+        else if (collision.gameObject.layer == 12)
+            collision.gameObject.transform.GetComponent<Target>().TakeDamage(objectDamagePerSecond * Time.deltaTime);
     }
     
     //angle calculation helper

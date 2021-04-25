@@ -8,9 +8,9 @@ using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
-    public float health = 50.0f;
-    public float maxHealth = 50.0f;
-    public float scoreModifier = 50000;
+    public float health;
+    public float maxHealth;
+    public float scoreModifier;
     public Canvas healthBar;
     public Image healthImage;
     public int ID;

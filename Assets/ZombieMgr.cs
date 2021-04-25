@@ -13,12 +13,16 @@ public class ZombieMgr : MonoBehaviour
     public List<GameObject> zombies = new List<GameObject>();
     public float spawnTimer = 1.5f;
     public GameObject regularZombie;
+    public GameObject quickZombie;
+    public GameObject strongZombie;
     public float waveTime;
 
     public bool waveDefeated;
     public bool waveFinishedSpawning;
     public int numOfZombiesInWave;
     public int zombiesSpawnedSoFar;
+
+    public bool doOnce = false;
 
     public List<Transform> spawnPoints;
 
@@ -59,6 +63,19 @@ public class ZombieMgr : MonoBehaviour
         if (numOfZombiesInWave == zombiesSpawnedSoFar)
         {
             waveFinishedSpawning = true;
+        }
+        if(waveFinishedSpawning)
+        {
+            if (zombies.Count == 0)
+            {
+                waveDefeated = true;
+            }
+        }
+        if(!doOnce)
+        {
+            zombies.Add(Instantiate(strongZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
+            zombies.Add(Instantiate(quickZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
+            doOnce = true;
         }
 
     }
