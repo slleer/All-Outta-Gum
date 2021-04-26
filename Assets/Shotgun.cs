@@ -16,12 +16,13 @@ public class Shotgun : Weapon
     public AudioSource reloadSound;
 
 
+
     //shotgun specific variables
     public float maxDistance;
-    public Quaternion l1 = Quaternion.Euler(0, 4.0f, 0);
-    public Quaternion r1 = Quaternion.Euler(0, -4.0f, 0);
-    public Quaternion l2 = Quaternion.Euler(0, 8.0f, 0);
-    public Quaternion r2 = Quaternion.Euler(0, -8.0f, 0);
+    public Quaternion l1 = Quaternion.Euler(0, 8.0f, 0);
+    public Quaternion r1 = Quaternion.Euler(0, -8.0f, 0);
+    public Quaternion l2 = Quaternion.Euler(0, 16.0f, 0);
+    public Quaternion r2 = Quaternion.Euler(0, -16.0f, 0);
 
     public void Start()
     {
@@ -133,6 +134,9 @@ public class Shotgun : Weapon
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
             }
+            GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactInstant, 2f);
+            timeToFire = Time.time + fireRate;
             if (Physics.Raycast(weaponObject.transform.position, l1*weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
@@ -149,6 +153,9 @@ public class Shotgun : Weapon
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
             }
+            GameObject impactInstantl1 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactInstantl1, 2f);
+            timeToFire = Time.time + fireRate;
             if (Physics.Raycast(weaponObject.transform.position, r1*weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
@@ -165,6 +172,9 @@ public class Shotgun : Weapon
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
             }
+            GameObject impactInstantr1 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactInstantr1, 2f);
+            timeToFire = Time.time + fireRate;
             if (Physics.Raycast(weaponObject.transform.position, l2*weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
@@ -181,6 +191,9 @@ public class Shotgun : Weapon
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
             }
+            GameObject impactInstantl2 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactInstantl2, 2f);
+            timeToFire = Time.time + fireRate;
             if (Physics.Raycast(weaponObject.transform.position, r2*weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
@@ -199,8 +212,8 @@ public class Shotgun : Weapon
             }
             clipCount -= 1;
 
-            GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactInstant, 2f);
+            GameObject impactInstantr2 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactInstantr2, 2f);
             timeToFire = Time.time + fireRate;
         }
         else
