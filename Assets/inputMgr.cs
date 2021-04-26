@@ -52,6 +52,7 @@ public class InputMgr : MonoBehaviour
             if(UIMgr.inst.pausePanel.activeSelf)
             {
                 Time.timeScale = 1;
+                WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + .01f;
                 UIMgr.inst.pausePanel.SetActive(false);
                 UIMgr.inst.scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
             }

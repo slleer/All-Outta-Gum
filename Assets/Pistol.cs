@@ -33,11 +33,15 @@ public class Pistol : Weapon
         */
         reload = true;
         gunType = Gun.pistol;
+        timeToFire = Time.time + .01f;
     }
     public void Update()
     {
         if (Time.time >= timeToFire)
+        {
             reload = true;
+            UIMgr.inst.reloadPanel.SetActive(!reload);
+        }
     }
     public override void Init()
     {
@@ -50,6 +54,8 @@ public class Pistol : Weapon
         {
             reload = false;
             UIMgr.inst.outOfAmmoPanel.SetActive(false);
+            UIMgr.inst.lowAmmoPanel.SetActive(false);
+            UIMgr.inst.reloadPanel.SetActive(!reload);
             timeToFire = Time.time + reloadRate;
             reloadSound.Play();
 
@@ -84,14 +90,21 @@ public class Pistol : Weapon
                 }
             }
         }
-        if(ammoCount <= 0)
+        if (ammoCount <= 0 && clipCount <= 0)
         {
             //Display to HUD "OUT OF AMMMO"
+            UIMgr.inst.lowAmmoPanel.SetActive(false);
             UIMgr.inst.outOfAmmoPanel.SetActive(true);
+        }
+        else if (ammoCount <= 0)
+        {
+            UIMgr.inst.lowAmmoPanel.SetActive(true);
         }
     }
     public override void Shoot()
     {
+        reload = true;
+        UIMgr.inst.reloadPanel.SetActive(!reload);
 
         if (clipCount > 0)
         {

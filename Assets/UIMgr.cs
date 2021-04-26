@@ -19,6 +19,7 @@ public class UIMgr : MonoBehaviour
     public GameObject outOfAmmoPanel;
     public GameObject pausePanel;
     public GameObject reloadPanel;
+    public GameObject lowAmmoPanel;
     public Text waveTimerText;
     public Text waveCountText;
     public Text clipAmmoText;                
@@ -46,11 +47,11 @@ public class UIMgr : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         healthSlider.value = Player.inst.health;
         staminaSlider.value = Player.inst.playerStamina;
-        reloadPanel.SetActive(!WeaponMgr.inst.selectedWeapon.reload);
+        
         clipAmmoText.text = string.Concat(WeaponMgr.inst.selectedWeapon.clipCount.ToString(), "/", WeaponMgr.inst.selectedWeapon.clipSize.ToString());
         totalAmmoText.text = WeaponMgr.inst.selectedWeapon.ammoCount.ToString();
 

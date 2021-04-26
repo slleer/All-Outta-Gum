@@ -67,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 25
   maxHealth: 25
-  scoreModifier: 50000
+  scoreModifier: 25000
   healthBar: {fileID: 7081344984567061404}
   healthImage: {fileID: 7081344984505178295}
   ID: 0

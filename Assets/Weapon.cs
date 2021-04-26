@@ -24,6 +24,8 @@ public class Weapon : MonoBehaviour
     public Weapon weaponObject;
     public Gun gunType;
 
+
+
     public virtual void Init()
     {
 

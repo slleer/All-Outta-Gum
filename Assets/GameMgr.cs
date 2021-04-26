@@ -39,6 +39,7 @@ public class GameMgr : MonoBehaviour
                     Debug.Log("Wave cleared. Gonna display this out later. ");
                     Player.inst.score += (Player.inst.score*3)/UIMgr.inst.waveClock;
                     Time.timeScale = 0;
+                    WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + 0.01f;
                     UIMgr.inst.OnGameOver();
                     betweenWave = true;
                 }
