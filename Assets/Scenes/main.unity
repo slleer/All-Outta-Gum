@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.45045012, g: 0.49828053, b: 0.5635241, a: 1}
+  m_IndirectSpecularColor: {r: 0.45044982, g: 0.49828, b: 0.5635236, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6828,10 +6828,10 @@ MonoBehaviour:
   baseDmg: 5
   bonusDmg: 0
   shotsPerSecond: 10
-  clipSize: 24
-  clipCount: 24
-  ammoCapacity: 48
-  ammoCount: 72
+  clipSize: 30
+  clipCount: 30
+  ammoCapacity: 90
+  ammoCount: 90
   reloadRate: 2
   timeToFire: 0
   reload: 0
@@ -8182,7 +8182,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1211203375}
-  - component: {fileID: 1211203377}
   - component: {fileID: 1211203376}
   m_Layer: 0
   m_Name: Weapon-Pistol
@@ -8220,11 +8219,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDmg: 10
   bonusDmg: 0
-  shotsPerSecond: 3
+  shotsPerSecond: 1.4
   clipSize: 8
   clipCount: 8
-  ammoCapacity: 480
-  ammoCount: 472
+  ammoCapacity: 40
+  ammoCount: 40
   reloadRate: 1.5
   timeToFire: 0
   reload: 0
@@ -8236,27 +8235,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 1891070721}
   impactEffect: {fileID: 100002, guid: 99c73c92ac40473459640b165473206f, type: 3}
   shootSound: {fileID: 1201956079}
-  reloadSound: {fileID: 1785517670}
---- !u!114 &1211203377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211203374}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85bd6164495bd14d8c8a9edc432a592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  impactForce: 1000
-  shotsPerSecond: 3
-  reloadRate: 1
-  weapon: {fileID: 1695038980}
-  muzzleFlash: {fileID: 1891070721}
-  impactEffect: {fileID: 100002, guid: 99c73c92ac40473459640b165473206f, type: 3}
-  audioSource: {fileID: 1201956079}
   reloadSound: {fileID: 1785517670}
 --- !u!1 &1225888870
 GameObject:
@@ -9531,12 +9509,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1055592728584207538, guid: aa970db7f784def4ba3d4779f66ef65b,
     type: 3}
   m_PrefabInstance: {fileID: 1887061935}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1695038980 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1694449805434718, guid: 6f1a7354265853f44b0ed5e2e43676ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 258106844}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1704920460 stripped
 Transform:
@@ -14424,8 +14396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa34491a13e13c46a445cdb38e32283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  maxHealth: 50
+  health: 10
+  maxHealth: 10
   speed: 12
   playerStamina: 10
   maxStamina: 10
@@ -14868,13 +14840,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa0ca2f28becba418d5fc7d32bdec20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDmg: 5
+  baseDmg: 10
   bonusDmg: 0
-  shotsPerSecond: 1.5
-  clipSize: 4
-  clipCount: 4
-  ammoCapacity: 48
-  ammoCount: 44
+  shotsPerSecond: 1
+  clipSize: 6
+  clipCount: 6
+  ammoCapacity: 30
+  ammoCount: 30
   reloadRate: 1.5
   timeToFire: 0
   reload: 0
