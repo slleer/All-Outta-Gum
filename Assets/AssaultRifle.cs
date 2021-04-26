@@ -17,6 +17,7 @@ public class AssaultRifle : Weapon
 
 
 
+
     public void Start()
     {
         /*

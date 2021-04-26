@@ -22,6 +22,7 @@ public class Weapon : MonoBehaviour
     public float timeToFire;
     public bool reload;
     public Weapon weaponObject;
+    public GameObject gunSprite;
     public Gun gunType;
 
 

@@ -19,17 +19,21 @@ public class WeaponMgr : MonoBehaviour
         switchWeaponsSound.Play();
         selectedWeaponIndex = (selectedWeaponIndex <= 0 ? weapons.Count - 1 : selectedWeaponIndex - 1);
         selectedWeapon.gameObject.SetActive(false);
+        selectedWeapon.gunSprite.SetActive(false);
         selectedWeapon = weapons[selectedWeaponIndex];
         selectedWeapon.timeToFire = Time.time + switchWeaponsDelay;
         selectedWeapon.gameObject.SetActive(true);
+        selectedWeapon.gunSprite.SetActive(true);
     }
     public void SelectNextWeapon()
     {
         switchWeaponsSound.Play();
         selectedWeaponIndex = (selectedWeaponIndex >= weapons.Count - 1 ? 0 : selectedWeaponIndex + 1);
         selectedWeapon.gameObject.SetActive(false);
+        selectedWeapon.gunSprite.SetActive(false);
         selectedWeapon = weapons[selectedWeaponIndex];
         selectedWeapon.timeToFire = Time.time + switchWeaponsDelay;
+        selectedWeapon.gunSprite.SetActive(true);
         selectedWeapon.gameObject.SetActive(true);
     }
 }

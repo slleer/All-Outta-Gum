@@ -14,9 +14,10 @@ public class Pistol : Weapon
     public GameObject impactEffect;
     public AudioSource shootSound;
     public AudioSource reloadSound;
-    
 
-    
+
+
+
     public void Start() 
     {
         /*

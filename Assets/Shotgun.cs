@@ -15,6 +15,7 @@ public class Shotgun : Weapon
     public AudioSource shootSound;
     public AudioSource reloadSound;
 
+
     //shotgun specific variables
     public float maxDistance;
     public Quaternion l1 = Quaternion.Euler(0, 4.0f, 0);
