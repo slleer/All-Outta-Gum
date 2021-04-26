@@ -17,6 +17,8 @@ public class UIMgr : MonoBehaviour
     public GameObject startPanel;
     public GameObject gameOverPanel;
     public GameObject outOfAmmoPanel;
+    public GameObject pausePanel;
+    public GameObject reloadPanel;
     public Text waveTimerText;
     public Text waveCountText;
     public Text clipAmmoText;                
@@ -39,6 +41,8 @@ public class UIMgr : MonoBehaviour
         waveCount = 0;
         waveCountText.text = string.Concat("Wave: ", waveCount.ToString());
         gameOverPanel.SetActive(false);
+        healthSlider.maxValue = Player.inst.maxHealth;
+        staminaSlider.maxValue = Player.inst.maxStamina;
     }
 
     // Update is called once per frame
@@ -46,8 +50,10 @@ public class UIMgr : MonoBehaviour
     {
         healthSlider.value = Player.inst.health;
         staminaSlider.value = Player.inst.playerStamina;
-        clipAmmoText.text = string.Concat(GunScript.roundsInClip.ToString(), "/", GunScript.clipSize.ToString());
-        totalAmmoText.text = Player.inst.ammoCount.ToString();
+        reloadPanel.SetActive(!WeaponMgr.inst.selectedWeapon.reload);
+        clipAmmoText.text = string.Concat(WeaponMgr.inst.selectedWeapon.clipCount.ToString(), "/", WeaponMgr.inst.selectedWeapon.clipSize.ToString());
+        totalAmmoText.text = WeaponMgr.inst.selectedWeapon.ammoCount.ToString();
+
         if(activeWave)
         {
             waveClock += Time.deltaTime;

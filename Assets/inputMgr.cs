@@ -26,25 +26,40 @@ public class InputMgr : MonoBehaviour
         regen = Player.inst.staminaRegenPerSecond;
         drain = Player.inst.staminaDrainPerSecond;
         maxDelay = Player.inst.regenDelay;
-    }    
+    }
 
     void Update()
     {
-        //if tab is pressed pause or unpause
-        if(Input.GetKeyUp(KeyCode.Tab))
+        if(Input.GetKeyUp(KeyCode.Q))
         {
-            //resume game
-            if(UIMgr.inst.gameOverPanel.activeSelf)
+            WeaponMgr.inst.SelectPreviousWeapon();
+        }
+        if(Input.GetKeyUp(KeyCode.E))
+        {
+            WeaponMgr.inst.SelectNextWeapon();
+        }
+        //reload on R keyup
+        if (Input.GetKeyUp(KeyCode.R))
+            WeaponMgr.inst.selectedWeapon.Reload();
+        //check for left mouse, nextTimeToFire, and not reloading
+        if ((Input.GetMouseButton(0)) && (Time.time >= WeaponMgr.inst.selectedWeapon.timeToFire))
+        {
+            WeaponMgr.inst.selectedWeapon.Shoot();
+        }
+        //if tab is pressed pause or unpause
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            if(UIMgr.inst.pausePanel.activeSelf)
             {
                 Time.timeScale = 1;
-                UIMgr.inst.gameOverPanel.SetActive(false);
+                UIMgr.inst.pausePanel.SetActive(false);
                 UIMgr.inst.scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
             }
             //pause menu
             else
-            {  
+            {
                 Time.timeScale = 0;
-                UIMgr.inst.OnGameOver();
+                UIMgr.inst.pausePanel.SetActive(true);
             }
         }
 
@@ -79,7 +94,7 @@ public class InputMgr : MonoBehaviour
                     Player.inst.playerStamina += regen * Time.deltaTime;
                 }
             }
-            
+
         }
 
         //movement happens whether shift is pressed or not, shift pressed turns sprintMultiplier to 3, defaults to 1 otherwise
