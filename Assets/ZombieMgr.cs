@@ -21,6 +21,9 @@ public class ZombieMgr : MonoBehaviour
     public int numOfZombiesInWave;
     public int zombiesSpawnedSoFar;
     public float zombieIncreasePercent;
+    public int fastZombieNumber;
+    public int strongZombieNumber;
+
 
     public bool doOnce = false;
 
@@ -54,8 +57,18 @@ public class ZombieMgr : MonoBehaviour
                 spawnTimer = 1.5f;
                 //instantiate zombie type at spawnPoint[random] with rotation identity
                 //add instance of zombie to List of GameObjects
-
-                zombies.Add(Instantiate(regularZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
+                if (zombiesSpawnedSoFar % fastZombieNumber == 0)
+                {
+                    zombies.Add(Instantiate(quickZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
+                }
+                else if (zombiesSpawnedSoFar % strongZombieNumber == 0)
+                {
+                    zombies.Add(Instantiate(strongZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
+                }
+                else
+                {
+                    zombies.Add(Instantiate(regularZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
+                }
                 zombiesSpawnedSoFar++;
             }
         }
@@ -71,13 +84,6 @@ public class ZombieMgr : MonoBehaviour
                 UIMgr.inst.StopClock();
             }
         }
-        if(!doOnce)
-        {
-            zombies.Add(Instantiate(strongZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
-            zombies.Add(Instantiate(quickZombie, spawnPoints[Random.Range(0, spawnPoints.Count)]));
-            doOnce = true;
-        }
-
     }
 
     public void ResetScene()

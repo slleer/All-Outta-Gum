@@ -47,14 +47,22 @@ public class Player : MonoBehaviour
         health = maxHealth;
         playerStamina = maxStamina;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(float dmg)
     {
         health -= dmg;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Item item = other.gameObject.GetComponent<Item>();
+        if(item.gunType == Gun.shotgun)
+        {
+            Debug.Log("We did it Marty!");
+            foreach(Weapon weap in WeaponMgr.inst.weapons)
+            {
+                if (weap.gunType == Gun.shotgun)
+                    weap.ammoCount = item.ammo;
+            }
+            other.gameObject.SetActive(false);
+        }
     }
 }

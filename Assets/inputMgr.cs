@@ -28,7 +28,7 @@ public class InputMgr : MonoBehaviour
         maxDelay = Player.inst.regenDelay;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyUp(KeyCode.Tab))
         {
@@ -110,14 +110,14 @@ public class InputMgr : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
                 player.transform.Translate(Player.inst.speedMultiplier * deltaPosition * Vector3.right * Time.deltaTime, Space.World);
 
-            if (Input.GetKey(KeyCode.Escape))
-            {
-#if UNITY_EDITOR
+        } //end if(!betweenWave)
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
-#else
-                            Application.Quit();
-#endif
-            }
+            #else
+                Application.Quit();
+            #endif
         }
     }
 }
