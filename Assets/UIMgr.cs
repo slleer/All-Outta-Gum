@@ -20,14 +20,20 @@ public class UIMgr : MonoBehaviour
     public GameObject pausePanel;
     public GameObject reloadPanel;
     public GameObject lowAmmoPanel;
+    public GameObject betweenWavesPanel;
     public Text waveTimerText;
     public Text waveCountText;
     public Text clipAmmoText;                
     public Text totalAmmoText;
     public Text scoreText;
+    public Text betweenWaveCountDownText;
+    public Text betweenWaveScoreText;
+    public Text betweenWaveWaveCountText;
     public float waveClock;
+    public float waveCountDownClock;
     public bool activeWave;
     public int waveCount;
+    public int someVal = 0; //used for debugging;
 
     public static UIMgr inst;
 
@@ -40,6 +46,7 @@ public class UIMgr : MonoBehaviour
     void Start()
     {
         waveCount = 0;
+        waveCountDownClock = 10;
         waveCountText.text = string.Concat("Wave: ", waveCount.ToString());
         gameOverPanel.SetActive(false);
         healthSlider.maxValue = Player.inst.maxHealth;
@@ -60,6 +67,20 @@ public class UIMgr : MonoBehaviour
             waveClock += Time.deltaTime;
             waveTimerText.text = FormatTime(waveClock);
         }
+        else
+        {
+            waveCountDownClock -= Time.fixedDeltaTime;
+            betweenWaveCountDownText.text = FormatTime(waveCountDownClock);
+        }
+    }
+    public void BetweenWaves()
+    {
+        betweenWavesPanel.SetActive(true);
+        betweenWaveScoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
+        betweenWaveWaveCountText.text = string.Concat("Wave: ", waveCount.ToString());
+        waveCountDownClock = 10.0f;
+        betweenWaveCountDownText.text = FormatTime(waveCountDownClock);
+
     }
     public void OnGameStart()
     {
@@ -67,16 +88,16 @@ public class UIMgr : MonoBehaviour
         UpdateWaveCount();
         StartClock();
     }
-    void StartClock()
+    public void StartClock()
     {
         activeWave = true;
         waveClock = 0.0f;
     }
-    void StopClock()
+    public void StopClock()
     {
         activeWave = false;
     }
-    void UpdateWaveCount()
+    public void UpdateWaveCount()
     {
         waveCount += 1;
         waveCountText.text = string.Concat("Wave: ", waveCount.ToString());

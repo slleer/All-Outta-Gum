@@ -48,6 +48,20 @@ public class Shotgun : Weapon
             reload = true;
             UIMgr.inst.reloadPanel.SetActive(!reload);
         }
+        if (ammoCount <= 0 && clipCount <= 0)
+        {
+            UIMgr.inst.lowAmmoPanel.SetActive(false);
+            UIMgr.inst.outOfAmmoPanel.SetActive(true);
+        }
+        else if (ammoCount <= 0)
+        {
+            UIMgr.inst.lowAmmoPanel.SetActive(true);
+        }
+        else
+        {
+            UIMgr.inst.lowAmmoPanel.SetActive(false);
+            UIMgr.inst.outOfAmmoPanel.SetActive(false);
+        }
     }
     public override void Init()
     {
@@ -59,8 +73,6 @@ public class Shotgun : Weapon
         if (ammoCount > 0 && (clipCount < clipSize))
         {
             reload = false;
-            UIMgr.inst.outOfAmmoPanel.SetActive(false);
-            UIMgr.inst.lowAmmoPanel.SetActive(false);
             UIMgr.inst.reloadPanel.SetActive(!reload);
             timeToFire = Time.time + reloadRate;
             reloadSound.Play();
@@ -95,16 +107,6 @@ public class Shotgun : Weapon
                     ammoCount -= clipCount;
                 }
             }
-        }
-        if (ammoCount <= 0 && clipCount <= 0)
-        {
-            //Display to HUD "OUT OF AMMMO"
-            UIMgr.inst.lowAmmoPanel.SetActive(false);
-            UIMgr.inst.outOfAmmoPanel.SetActive(true);
-        }
-        else if (ammoCount <= 0)
-        {
-            UIMgr.inst.lowAmmoPanel.SetActive(true);
         }
     }
     public override void Shoot()

@@ -20,6 +20,7 @@ public class ZombieMgr : MonoBehaviour
     public bool waveFinishedSpawning;
     public int numOfZombiesInWave;
     public int zombiesSpawnedSoFar;
+    public float zombieIncreasePercent;
 
     public bool doOnce = false;
 
@@ -67,6 +68,7 @@ public class ZombieMgr : MonoBehaviour
             if (zombies.Count == 0)
             {
                 waveDefeated = true;
+                UIMgr.inst.StopClock();
             }
         }
         if(!doOnce)
@@ -88,5 +90,14 @@ public class ZombieMgr : MonoBehaviour
         waveFinishedSpawning = false;
         numOfZombiesInWave = 8;
         zombiesSpawnedSoFar = 0;
+    }
+    public void NextWave()
+    {
+        zombies.Clear();
+        waveFinishedSpawning = false;
+        numOfZombiesInWave += (int)(numOfZombiesInWave * zombieIncreasePercent);
+        zombiesSpawnedSoFar = 0;
+        waveDefeated = false;
+        
     }
 }

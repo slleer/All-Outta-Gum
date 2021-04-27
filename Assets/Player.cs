@@ -42,6 +42,11 @@ public class Player : MonoBehaviour
         ammoCount = 43; // need to get the weapon manager going to get max ammo from gun for ammoCount value.
         score = 0;
     }
+    public void NextWave()
+    {
+        health = maxHealth;
+        playerStamina = maxStamina;
+    }
     // Update is called once per frame
     void Update()
     {

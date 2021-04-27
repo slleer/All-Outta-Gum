@@ -11,7 +11,7 @@ public class GameMgr : MonoBehaviour
 {
     public static GameMgr inst;
     public bool betweenWave;
-    public float coolDown = 5.0f;
+    public float coolDown = 10.0f;
 
     private void Awake()
     {
@@ -30,21 +30,34 @@ public class GameMgr : MonoBehaviour
             Time.timeScale = 0;
             UIMgr.inst.OnGameOver();
         }
-        if(ZombieMgr.inst.waveFinishedSpawning && ZombieMgr.inst.zombies.Count <= 0)
+        if(ZombieMgr.inst.waveDefeated)
         {
+            if(!betweenWave)
+            {
+                Player.inst.score += (Player.inst.score * 3) / UIMgr.inst.waveClock;
+                UIMgr.inst.BetweenWaves();
+                coolDown = UIMgr.inst.waveCountDownClock;
+                betweenWave = true;
+            }
             if (coolDown < 0)
             {
-                if(!betweenWave)
-                {
-                    Debug.Log("Wave cleared. Gonna display this out later. ");
-                    Player.inst.score += (Player.inst.score*3)/UIMgr.inst.waveClock;
-                    Time.timeScale = 0;
-                    WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + 0.01f;
-                    UIMgr.inst.OnGameOver();
-                    betweenWave = true;
-                }
+
+                UIMgr.inst.betweenWavesPanel.SetActive(false);
+                Debug.Log("Wave cleared. Gonna display this out later. ");
+                UIMgr.inst.UpdateWaveCount();
+                UIMgr.inst.StartClock();
+                ZombieMgr.inst.NextWave();
+                Player.inst.NextWave();
+                WeaponMgr.inst.NextWave();
+                WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + 0.01f;
+                betweenWave = false;
+                ZombieMgr.inst.waveDefeated = false;
+                Debug.Log(ZombieMgr.inst.waveDefeated);
+                coolDown = 10;
+                
+                
             }
-            coolDown -= Time.deltaTime;
+            coolDown = UIMgr.inst.waveCountDownClock;
         }
     }
     

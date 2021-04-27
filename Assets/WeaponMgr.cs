@@ -36,4 +36,12 @@ public class WeaponMgr : MonoBehaviour
         selectedWeapon.gunSprite.SetActive(true);
         selectedWeapon.gameObject.SetActive(true);
     }
+    public void NextWave()
+    {
+        foreach(Weapon weap in weapons)
+        {
+            weap.clipCount = weap.clipSize;
+            weap.ammoCount = weap.ammoCapacity;
+        }
+    }
 }
