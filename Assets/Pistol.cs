@@ -116,7 +116,7 @@ public class Pistol : Weapon
             shootSound.Play();
             RaycastHit hit;
             //hit.rigidbody.
-            if (Physics.Raycast(weaponObject.transform.position, weaponObject.transform.forward, out hit))
+            if (Physics.Raycast(weaponObject.transform.position, Player.inst.transform.forward, out hit))
             {
                 Target target = hit.transform.GetComponent<Target>();
                 if (target != null)
@@ -131,7 +131,7 @@ public class Pistol : Weapon
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
             }
-
+            DrawLine(weaponObject.transform.position, hit.point, Color.white, 0.1f);
             clipCount -= 1;
 
             GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
@@ -144,5 +144,7 @@ public class Pistol : Weapon
             Reload();
         }
     }
+
+
 
 }

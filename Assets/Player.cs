@@ -56,11 +56,11 @@ public class Player : MonoBehaviour
         Item item = other.gameObject.GetComponent<Item>();
         if(item.gunType == Gun.shotgun)
         {
-            Debug.Log("We did it Marty!");
+            //Debug.Log("We did it Marty!");
             foreach(Weapon weap in WeaponMgr.inst.weapons)
             {
                 if (weap.gunType == Gun.shotgun)
-                    weap.ammoCount = item.ammo;
+                    weap.ammoCount += item.ammo;
             }
             other.gameObject.SetActive(false);
         }

@@ -116,9 +116,10 @@ public class AssaultRifle : Weapon
             //shoot, delay next shot until current time + fireRate
             muzzleFlash.Play();
             shootSound.Play();
-            //RaycastHit hit;
+            RaycastHit hit;
             //hit.rigidbody.
-            if (Physics.Raycast(weaponObject.transform.position, weaponObject.transform.forward, out RaycastHit hit))
+            //if (Physics.Raycast(weaponObject.transform.position, weaponObject.transform.forward, out RaycastHit hit))
+            if (Physics.Raycast(weaponObject.transform.position, Player.inst.transform.forward, out hit)) 
             {
                 Target target = hit.transform.GetComponent<Target>();
                 if (target != null)
@@ -133,7 +134,7 @@ public class AssaultRifle : Weapon
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
             }
-
+            DrawLine(weaponObject.transform.position, hit.point, Color.white, 0.1f);
             clipCount -= 1;
 
             GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));

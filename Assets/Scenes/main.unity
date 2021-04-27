@@ -716,7 +716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
   m_LocalRotation: {x: 0.18596195, y: -0.2539772, z: 0.049828347, w: 0.94785595}
-  m_LocalPosition: {x: 6.4, y: 10, z: 3.7}
+  m_LocalPosition: {x: 17.4, y: 28.2, z: -15.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8380,8 +8380,8 @@ MonoBehaviour:
   shotsPerSecond: 1.4
   clipSize: 8
   clipCount: 8
-  ammoCapacity: 40
-  ammoCount: 40
+  ammoCapacity: 480
+  ammoCount: 472
   reloadRate: 1.5
   timeToFire: 0
   reload: 0
