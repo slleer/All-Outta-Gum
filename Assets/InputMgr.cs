@@ -28,10 +28,11 @@ public class InputMgr : MonoBehaviour
         maxDelay = Player.inst.regenDelay;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetKeyUp(KeyCode.Tab))
         {
+            Debug.Log(UIMgr.inst.pausePanel.activeSelf);
             if (UIMgr.inst.pausePanel.activeSelf)
             {
                 Time.timeScale = 1;
@@ -39,8 +40,7 @@ public class InputMgr : MonoBehaviour
                 UIMgr.inst.pausePanel.SetActive(false);
                 UIMgr.inst.scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
             }
-            //pause menu
-            else
+            else //pause menu
             {
                 Time.timeScale = 0;
                 UIMgr.inst.pausePanel.SetActive(true);

@@ -42,6 +42,7 @@ public class Weapon : MonoBehaviour
 
     public void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 0.2f)
     {
+        //Debug.Log(start + " " + end + " " + color);
         GameObject myLine = new GameObject();
         myLine.transform.position = start;
         myLine.AddComponent<LineRenderer>();

@@ -116,7 +116,9 @@ public class Pistol : Weapon
             shootSound.Play();
             RaycastHit hit;
             //hit.rigidbody.
-            if (Physics.Raycast(weaponObject.transform.position, Player.inst.transform.forward, out hit))
+            Vector3 location = weaponObject.transform.position + (new Vector3(0, 3f, 0));
+            //Debug.Log(location);
+            if (Physics.Raycast(location, weaponObject.transform.forward, out hit))
             {
                 Target target = hit.transform.GetComponent<Target>();
                 if (target != null)
@@ -131,6 +133,7 @@ public class Pistol : Weapon
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
                 }
             }
+            //Debug.Log(location + " " + weaponObject.transform.forward + " " + hit.point + "before drawline");
             DrawLine(weaponObject.transform.position, hit.point, Color.white, 0.1f);
             clipCount -= 1;
 

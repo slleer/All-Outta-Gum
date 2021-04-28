@@ -51,7 +51,7 @@ public class GameMgr : MonoBehaviour
                 WeaponMgr.inst.NextWave();
                 WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + 0.01f;
                 betweenWave = false;
-                ZombieMgr.inst.waveDefeated = false;
+                //ZombieMgr.inst.waveDefeated = false;
                 Debug.Log(ZombieMgr.inst.waveDefeated);
                 coolDown = 10;
                 
@@ -66,6 +66,11 @@ public class GameMgr : MonoBehaviour
         //Initiate wave somehow here
         Time.timeScale = 1;
         UIMgr.inst.OnGameStart();
+        foreach(Weapon weap in WeaponMgr.inst.weapons)
+        {
+            if (weap != WeaponMgr.inst.selectedWeapon)
+                weap.gameObject.SetActive(false);
+        }
 
     }
     public void NewGame()

@@ -120,7 +120,8 @@ public class Shotgun : Weapon
             shootSound.Play();
             RaycastHit hit;
             //hit.rigidbody.
-            if (Physics.Raycast(weaponObject.transform.position, Player.inst.transform.forward, out hit, maxDistance))
+            Vector3 location = weaponObject.transform.position + (new Vector3(0, 3f, 0));
+            if (Physics.Raycast(location, weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
                 Target target = hit.transform.GetComponent<Target>();
@@ -140,7 +141,7 @@ public class Shotgun : Weapon
             GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactInstant, 2f);
             timeToFire = Time.time + fireRate;
-            if (Physics.Raycast(weaponObject.transform.position, l1 * Player.inst.transform.forward, out hit, maxDistance))
+            if (Physics.Raycast(location, l1 * weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
                 Target target = hit.transform.GetComponent<Target>();
@@ -160,7 +161,7 @@ public class Shotgun : Weapon
             GameObject impactInstantl1 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactInstantl1, 2f);
             timeToFire = Time.time + fireRate;
-            if (Physics.Raycast(weaponObject.transform.position, r1 * Player.inst.transform.forward, out hit, maxDistance))
+            if (Physics.Raycast(location, r1 * weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
                 Target target = hit.transform.GetComponent<Target>();
@@ -180,7 +181,7 @@ public class Shotgun : Weapon
             GameObject impactInstantr1 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactInstantr1, 2f);
             timeToFire = Time.time + fireRate;
-            if (Physics.Raycast(weaponObject.transform.position, l2 * Player.inst.transform.forward, out hit, maxDistance))
+            if (Physics.Raycast(location, l2 * weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
                 Target target = hit.transform.GetComponent<Target>();
@@ -200,7 +201,7 @@ public class Shotgun : Weapon
             GameObject impactInstantl2 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactInstantl2, 2f);
             timeToFire = Time.time + fireRate;
-            if (Physics.Raycast(weaponObject.transform.position, r2 * Player.inst.transform.forward, out hit, maxDistance))
+            if (Physics.Raycast(location, r2 * weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
                 Target target = hit.transform.GetComponent<Target>();

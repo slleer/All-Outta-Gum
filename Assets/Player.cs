@@ -54,15 +54,30 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Item item = other.gameObject.GetComponent<Item>();
-        if(item.gunType == Gun.shotgun)
+        if(item.item == ItemType.ammo)
         {
-            //Debug.Log("We did it Marty!");
-            foreach(Weapon weap in WeaponMgr.inst.weapons)
+            if(item.ammo.GunType.Equals(Gun.shotgun))
             {
-                if (weap.gunType == Gun.shotgun)
-                    weap.ammoCount += item.ammo;
+                //Debug.Log("We did it Marty!");
+                foreach(Weapon weap in WeaponMgr.inst.weapons)
+                {
+                    if (weap.gunType == item.ammo.GunType)
+                        weap.ammoCount += item.ammo.AmmoCount;
+                    Debug.Log("Shotgun");
+                }
+                other.gameObject.SetActive(false);
             }
-            other.gameObject.SetActive(false);
+            else if(item.ammo.GunType.Equals(Gun.assaultRifle))
+            {
+                foreach (Weapon weap in WeaponMgr.inst.weapons)
+                {
+                    if (weap.gunType == item.ammo.GunType)
+                        weap.ammoCount += item.ammo.AmmoCount;
+                    Debug.Log("AR");
+                }
+                other.gameObject.SetActive(false);
+            }
+
         }
     }
 }

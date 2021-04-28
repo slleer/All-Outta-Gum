@@ -14,6 +14,9 @@ public class WeaponMgr : MonoBehaviour
     {
         inst = this;
     }
+    public void Start()
+    {
+    }
     public void SelectPreviousWeapon()
     {
         switchWeaponsSound.Play();
@@ -41,7 +44,7 @@ public class WeaponMgr : MonoBehaviour
         foreach(Weapon weap in weapons)
         {
             weap.clipCount = weap.clipSize;
-            weap.ammoCount = weap.ammoCapacity;
+            weap.ammoCount = (weap.ammoCapacity > weap.ammoCount? weap.ammoCapacity : weap.ammoCount);
         }
     }
 }
