@@ -63,9 +63,12 @@ public class Player : MonoBehaviour
                 {
                     if (weap.gunType == item.ammo.GunType)
                         weap.ammoCount += item.ammo.AmmoCount;
-                    Debug.Log("Shotgun");
+                    //Debug.Log("Shotgun");
                 }
-                other.gameObject.SetActive(false);
+                item.life = 0;
+                item.Tick();
+                //ItemMgr.inst.items.Remove(other.gameObject);
+                //Destroy(other);
             }
             else if(item.ammo.GunType.Equals(Gun.assaultRifle))
             {
@@ -73,9 +76,12 @@ public class Player : MonoBehaviour
                 {
                     if (weap.gunType == item.ammo.GunType)
                         weap.ammoCount += item.ammo.AmmoCount;
-                    Debug.Log("AR");
+                    //Debug.Log("AR");
                 }
-                other.gameObject.SetActive(false);
+                item.life = 0;
+                item.Tick();
+                //ItemMgr.inst.items.Remove(other.gameObject);
+                //Destroy(other);
             }
 
         }

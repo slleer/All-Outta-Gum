@@ -119,7 +119,7 @@ public class AssaultRifle : Weapon
             RaycastHit hit;
             //hit.rigidbody.
             //if (Physics.Raycast(weaponObject.transform.position, weaponObject.transform.forward, out RaycastHit hit))
-            Vector3 location = weaponObject.transform.position + (new Vector3(0, 3f, 0));
+            Vector3 location = weaponObject.transform.position + (new Vector3(0, 1f, 0));
             if (Physics.Raycast(location, weaponObject.transform.forward, out hit)) 
             {
                 Target target = hit.transform.GetComponent<Target>();

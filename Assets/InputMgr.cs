@@ -32,7 +32,7 @@ public class InputMgr : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Tab))
         {
-            Debug.Log(UIMgr.inst.pausePanel.activeSelf);
+            //Debug.Log(UIMgr.inst.pausePanel.activeSelf);
             if (UIMgr.inst.pausePanel.activeSelf)
             {
                 Time.timeScale = 1;

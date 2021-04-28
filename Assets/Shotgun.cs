@@ -120,7 +120,7 @@ public class Shotgun : Weapon
             shootSound.Play();
             RaycastHit hit;
             //hit.rigidbody.
-            Vector3 location = weaponObject.transform.position + (new Vector3(0, 3f, 0));
+            Vector3 location = weaponObject.transform.position + (new Vector3(0, 1f, 0));
             if (Physics.Raycast(location, weaponObject.transform.forward, out hit, maxDistance))
             {
                 Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);

@@ -116,7 +116,7 @@ public class Pistol : Weapon
             shootSound.Play();
             RaycastHit hit;
             //hit.rigidbody.
-            Vector3 location = weaponObject.transform.position + (new Vector3(0, 3f, 0));
+            Vector3 location = weaponObject.transform.position + (new Vector3(0, 1f, 0));
             //Debug.Log(location);
             if (Physics.Raycast(location, weaponObject.transform.forward, out hit))
             {

@@ -33,10 +33,11 @@ public class Item : MonoBehaviour
 
     public void Start()
     {
-        InstantiateAmmo();
+        //InstantiateAmmo();
     }
     public void InstantiateAmmo()
     {
+        item = ItemType.ammo;
         int gunTypeNum = Random.Range(0, 2) + 1;
         ammo.GunType = (Gun)gunTypeNum;
         ammo.AmmoCount = Random.Range(20, 151);
@@ -48,6 +49,13 @@ public class Item : MonoBehaviour
     }
     public void Tick()
     {
-        boost.Duration -= Time.deltaTime;
+        life -= Time.deltaTime;
+        if (life <= 0)
+            Die();
+    }
+    public void Die()
+    {
+        ItemMgr.inst.items.Remove(gameObject);
+        Destroy(gameObject);
     }
 }
