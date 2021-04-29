@@ -12,9 +12,11 @@ public class AssaultRifle : Weapon
     public float fireRate;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
-    public AudioSource shootSound;
+    AudioSource shootSoundSrc;
+    public AudioClip shootSoundClip;
     public AudioSource reloadSound;
-
+    public AudioSource emptyMagSound;
+    float timeToPlay = 0.0f;
 
 
 
@@ -34,6 +36,8 @@ public class AssaultRifle : Weapon
         */
         reload = true;
         gunType = Gun.assaultRifle;
+
+        shootSoundSrc = GetComponent<AudioSource>();
     }
     public void Update()
     {
@@ -103,6 +107,11 @@ public class AssaultRifle : Weapon
                 }
             }
         }
+        else if(Time.time > timeToPlay)
+        {
+            emptyMagSound.Play();
+            timeToPlay = Time.time + 0.5f;
+        }
 
 
 
@@ -115,7 +124,8 @@ public class AssaultRifle : Weapon
         {
             //shoot, delay next shot until current time + fireRate
             muzzleFlash.Play();
-            shootSound.Play();
+            //shootSound.Play();
+            shootSoundSrc.PlayOneShot(shootSoundClip);
             RaycastHit hit;
             //hit.rigidbody.
             //if (Physics.Raycast(weaponObject.transform.position, weaponObject.transform.forward, out RaycastHit hit))

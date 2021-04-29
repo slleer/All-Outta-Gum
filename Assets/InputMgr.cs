@@ -62,8 +62,13 @@ public class InputMgr : MonoBehaviour
             //check for left mouse, nextTimeToFire, and not reloading
             if ((Input.GetMouseButton(0)) && (Time.time >= WeaponMgr.inst.selectedWeapon.timeToFire))
             {
+                //WeaponMgr.inst.mouseButtonUp = false;
                 WeaponMgr.inst.selectedWeapon.Shoot();
+                WeaponMgr.inst.canFire = false;
             }
+
+            if (Input.GetMouseButtonUp(0)) //used for single shot per click aka semi-automatic
+                WeaponMgr.inst.canFire = true;
             //if tab is pressed pause or unpause
 
             //while shift is pressed & stamina is remaining - set moveSpeedMultiplier to 3

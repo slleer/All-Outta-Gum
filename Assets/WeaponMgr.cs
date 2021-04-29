@@ -10,6 +10,8 @@ public class WeaponMgr : MonoBehaviour
     public List<Weapon> weapons;
     public AudioSource switchWeaponsSound;
     public float switchWeaponsDelay;
+    public bool canFire = true; //used for one click per shot, default is hold button down for fully automatic
+    //public bool mouseButtonUp;
     private void Awake()
     {
         inst = this;
