@@ -48,7 +48,7 @@ public class ItemMgr : MonoBehaviour
                 items.Add(Instantiate(testCube, itemSpawnLocation.transform));
                 Item item = items[itemsIndex].GetComponent<Item>();
                 // Instantiate as ammo if 1-5, powerup 6-10
-                if (chance <= 2)
+                if (chance <= 5)
                     item.InstantiateAmmo();
                 else
                     item.InstantiateBoost();
