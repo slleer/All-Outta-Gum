@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     public float staminaDrainPerSecond;
     public float speedMultiplier;
     public float sprintMultiplier;
+    public float heathBoostMult;
+    public float staminaBoostMult;
 
     public int ammoCount;
     public float score;
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
     }
     public void NextWave()
     {
-        health = maxHealth;
+        //health = maxHealth;
         playerStamina = maxStamina;
     }
     public void TakeDamage(float dmg)
@@ -54,36 +56,32 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Item item = other.gameObject.GetComponent<Item>();
-        if(item.item == ItemType.ammo)
-        {
-            if(item.ammo.GunType.Equals(Gun.shotgun))
-            {
-                //Debug.Log("We did it Marty!");
-                foreach(Weapon weap in WeaponMgr.inst.weapons)
-                {
-                    if (weap.gunType == item.ammo.GunType)
-                        weap.ammoCount += item.ammo.AmmoCount;
-                    //Debug.Log("Shotgun");
-                }
-                item.life = 0;
-                item.Tick();
-                //ItemMgr.inst.items.Remove(other.gameObject);
-                //Destroy(other);
-            }
-            else if(item.ammo.GunType.Equals(Gun.assaultRifle))
+        if(!item.boostActive)
+        { 
+            item.pickUpSound.Play();
+            if (item.item == ItemType.ammo)
             {
                 foreach (Weapon weap in WeaponMgr.inst.weapons)
                 {
                     if (weap.gunType == item.ammo.GunType)
+                    {
                         weap.ammoCount += item.ammo.AmmoCount;
-                    //Debug.Log("AR");
+                    }
+                    //Debug.Log("Shotgun");
                 }
                 item.life = 0;
                 item.Tick();
-                //ItemMgr.inst.items.Remove(other.gameObject);
-                //Destroy(other);
             }
-
+            else if (item.item.Equals(ItemType.boost))
+            {
+                Debug.Log("Item triggered " + item.boost.BoostType + " duration " + item.boost.Duration);
+                other.gameObject.GetComponent<Renderer>().enabled = false;
+                item.boostActive = true;
+                Debug.Log("Duration on trigger: " + item.boost.Duration);
+                UIMgr.inst.ActivateBoostBar((int)item.boost.BoostType, item.boost.Duration);
+                item.boostTimer = item.boost.Duration;
+                item.life = item.boost.Duration + 1;
+            }
         }
     }
 }

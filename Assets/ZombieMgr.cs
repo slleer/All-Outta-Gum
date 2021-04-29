@@ -11,11 +11,12 @@ public class ZombieMgr : MonoBehaviour
 {
     public static ZombieMgr inst;
     public List<GameObject> zombies = new List<GameObject>();
-    public float spawnTimer = 1.5f;
+    public float spawnTimer;
     public GameObject regularZombie;
     public GameObject quickZombie;
     public GameObject strongZombie;
 
+    public float spawnTimerControler = 1.5f;
     public bool waveDefeated;
     public bool waveFinishedSpawning;
     public int numOfZombiesInWave;
@@ -40,6 +41,7 @@ public class ZombieMgr : MonoBehaviour
         waveFinishedSpawning = false;
         numOfZombiesInWave = 8;
         zombiesSpawnedSoFar = 0;
+        spawnTimer = spawnTimerControler;
     }
 
     // Update is called once per frame

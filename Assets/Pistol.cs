@@ -64,6 +64,10 @@ public class Pistol : Weapon
     {
         
     }
+    public override void PlayReloadSound()
+    {
+        reloadSound.Play();
+    }
     public override void Reload()
     {
         //if the player has ammo in reserve

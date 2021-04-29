@@ -21,6 +21,10 @@ public class UIMgr : MonoBehaviour
     public GameObject reloadPanel;
     public GameObject lowAmmoPanel;
     public GameObject betweenWavesPanel;
+    public GameObject boostPanel;
+    public Text boostPanelText;
+    public Slider boostSlider;
+    public Image boostFillImg;
     public Text waveTimerText;
     public Text waveCountText;
     public Text clipAmmoText;                
@@ -71,6 +75,27 @@ public class UIMgr : MonoBehaviour
         {
             waveCountDownClock -= Time.fixedDeltaTime;
             betweenWaveCountDownText.text = FormatTime(waveCountDownClock);
+        }
+    }
+    public void ActivateBoostBar(int boostType, float duration)
+    {
+        boostPanel.SetActive(true);
+        Debug.Log("Duration at activate: " + duration);
+        boostSlider.maxValue = duration;
+        if(boostType == 0)
+        {
+            boostPanelText.text = "Bubble Gum!";
+            boostFillImg.color = new Color32(229, 25, 207, 255);
+        }
+        else if(boostType == 2)
+        {
+            boostPanelText.text = "Health Boost!";
+            boostFillImg.color = new Color32(238, 25, 25, 255);
+        }
+        else
+        {
+            boostPanelText.text = "Stamina Boost!";
+            boostFillImg.color = new Color32(34, 155, 218, 255);
         }
     }
     public void BetweenWaves()

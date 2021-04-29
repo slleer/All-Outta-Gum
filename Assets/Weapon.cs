@@ -39,7 +39,10 @@ public class Weapon : MonoBehaviour
     {
 
     }
+    public virtual void PlayReloadSound()
+    {
 
+    }
     public void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 0.2f)
     {
         //Debug.Log(start + " " + end + " " + color);

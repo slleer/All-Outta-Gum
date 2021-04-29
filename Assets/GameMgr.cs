@@ -53,7 +53,9 @@ public class GameMgr : MonoBehaviour
                 betweenWave = false;
                 //ZombieMgr.inst.waveDefeated = false;
                 Debug.Log(ZombieMgr.inst.waveDefeated);
-                coolDown = 10;
+                //coolDown = 10;
+                if(ZombieMgr.inst.spawnTimerControler >= 1)
+                    ZombieMgr.inst.spawnTimerControler -= Time.deltaTime*2;
                 
                 
             }

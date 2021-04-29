@@ -12,6 +12,8 @@ public class PlayerMgr : MonoBehaviour
     public Transform player;
     public Transform playerCamera;
 
+    public float healthGain = 1f;
+
     float angle;
     Vector3 cameraPosition;
     readonly float scrollScale = 2f;
@@ -36,6 +38,11 @@ public class PlayerMgr : MonoBehaviour
         cameraPosition.z = player.position.z;
         cameraPosition.y = UpdateCameraZoom(cameraPosition.y);
         playerCamera.position = cameraPosition;
+        if(GameMgr.inst.betweenWave)
+        {
+            if(Player.inst.health < Player.inst.maxHealth)
+                Player.inst.health += healthGain * Time.deltaTime;
+        }
     }
 
     //lock camera y between 60.0f and 80.0f

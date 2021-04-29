@@ -74,6 +74,10 @@ public class Shotgun : Weapon
     {
 
     }
+    public override void PlayReloadSound()
+    {
+        reloadSound.Play();
+    }
     public override void Reload()
     {
         //if the player has ammo in reserve
@@ -156,7 +160,7 @@ public class Shotgun : Weapon
                 GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactInstant, 2f);
                 //timeToFire = Time.time + fireRate;
-                timeToFire = Time.time + 0.25f;
+                //timeToFire = Time.time + 0.25f;
                 if (Physics.Raycast(location, l1 * weaponObject.transform.forward, out hit, maxDistance))
                 {
                     Debug.DrawLine(weaponObject.transform.position, hit.point, Color.yellow, 2);
@@ -239,7 +243,7 @@ public class Shotgun : Weapon
 
                 GameObject impactInstantr2 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactInstantr2, 2f);
-                //timeToFire = Time.time + fireRate;
+                timeToFire = Time.time + fireRate;
             }
             else
             {
