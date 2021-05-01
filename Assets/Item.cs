@@ -30,9 +30,11 @@ public class Item : MonoBehaviour
     public Ammo ammo;
     public Boost boost;
     public bool boostActive;
+
     public ItemType item;
     public float life;
     public float boostTimer;
+    public GameObject ammoBoxPrefab;
     public GameObject shotgunImg;
     public GameObject arImg;
     public string itemLabel;
@@ -42,11 +44,13 @@ public class Item : MonoBehaviour
     public Material bbGumMaterial;
     public Material healthMaterial;
     public Material staminaMaterial;
+    public bool played;
 
     public void Start()
     {
         //InstantiateAmmo();
         boostActive = false;
+        played = false;
         boostTimer = 0;
 
     }
@@ -60,6 +64,7 @@ public class Item : MonoBehaviour
                 //Debug.Log("in bubbleGum pre tick");
                 Player.inst.health = Player.inst.maxHealth + .1f;
                 Player.inst.playerStamina = Player.inst.maxStamina + 1;
+                ItemMgr.inst.bbGumActive = true;
                 Tick();
             }
             else if(boost.BoostType.Equals(PowerUp.healthBoost))
@@ -76,11 +81,18 @@ public class Item : MonoBehaviour
             }
         }
     }
+    public void PlayPickUpSound()
+    {
+        pickUpSound.Play();
+    }
     public void InstantiateAmmo()
     {
         item = ItemType.ammo;
         int gunTypeNum = Random.Range(0, 2) + 1;
         ammo.GunType = (Gun)gunTypeNum;
+        this.gameObject.GetComponent<MeshFilter>().mesh = ammoBoxPrefab.gameObject.GetComponent<MeshFilter>().sharedMesh;
+        //Debug.Log(this.gameObject.transform.localScale);
+            //= new Vector3(1.2f, 1.2f, 1.2f);
         if(ammo.GunType.Equals(Gun.assaultRifle))
         {
             ammo.AmmoCount = Random.Range(30, 151);
@@ -105,7 +117,7 @@ public class Item : MonoBehaviour
         boost.Duration = Random.Range(5, 31);
         life = boost.Duration;
         boostTimer = boost.Duration;
-        Debug.Log("Boost Instantiated " + boost.BoostType);
+        //Debug.Log("Boost Instantiated " + boost.BoostType);
         itemLabel = GetBoostText();
     }
     public void Tick()
@@ -118,6 +130,12 @@ public class Item : MonoBehaviour
         else if (boostActive)
         {
             UIMgr.inst.boostPanel.SetActive(false);
+            if (Player.inst.health > Player.inst.maxHealth)
+                Player.inst.health = Player.inst.maxHealth;
+            if (Player.inst.playerStamina > Player.inst.maxStamina)
+                Player.inst.playerStamina = Player.inst.maxStamina;
+            if (ItemMgr.inst.bbGumActive)
+                ItemMgr.inst.bbGumActive = false;
         }
 
         life -= Time.deltaTime;

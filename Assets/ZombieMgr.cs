@@ -16,6 +16,7 @@ public class ZombieMgr : MonoBehaviour
     public GameObject quickZombie;
     public GameObject strongZombie;
 
+    public static int mostZsAtOnce;
     public float spawnTimerControler = 1.5f;
     public bool waveDefeated;
     public bool waveFinishedSpawning;
@@ -42,6 +43,7 @@ public class ZombieMgr : MonoBehaviour
         numOfZombiesInWave = 8;
         zombiesSpawnedSoFar = 0;
         spawnTimer = spawnTimerControler;
+        mostZsAtOnce = 0;
     }
 
     // Update is called once per frame
@@ -89,6 +91,8 @@ public class ZombieMgr : MonoBehaviour
                 delay -= Time.deltaTime; 
             }
         }
+        if (zombies.Count > mostZsAtOnce)
+            mostZsAtOnce = zombies.Count;
     }
 
     public void ResetScene()
@@ -101,11 +105,14 @@ public class ZombieMgr : MonoBehaviour
         waveFinishedSpawning = false;
         numOfZombiesInWave = 8;
         zombiesSpawnedSoFar = 0;
+        mostZsAtOnce = 0;
         
     }
     public void NextWave()
     {
         zombies.Clear();
+        Debug.Log("Most zombies on screen at once: " + mostZsAtOnce);
+        mostZsAtOnce = 0;
         waveFinishedSpawning = false;
         numOfZombiesInWave += (int)(numOfZombiesInWave * zombieIncreasePercent);
         zombiesSpawnedSoFar = 0;

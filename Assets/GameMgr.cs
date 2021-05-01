@@ -7,12 +7,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameMgr : MonoBehaviour
 {
     public static GameMgr inst;
     public bool betweenWave;
     public float coolDown = 10.0f;
-
+    public bool gameActive;
     private void Awake()
     {
         inst = this;
@@ -21,6 +22,7 @@ public class GameMgr : MonoBehaviour
     {
         Time.timeScale = 0;
         betweenWave = false;
+        gameActive = false;
     }
 
     void Update()
@@ -54,8 +56,8 @@ public class GameMgr : MonoBehaviour
                 //ZombieMgr.inst.waveDefeated = false;
                 Debug.Log(ZombieMgr.inst.waveDefeated);
                 //coolDown = 10;
-                if(ZombieMgr.inst.spawnTimerControler >= 1)
-                    ZombieMgr.inst.spawnTimerControler -= Time.deltaTime*2;
+                if(ZombieMgr.inst.spawnTimerControler >= .5)
+                    ZombieMgr.inst.spawnTimerControler -= Time.deltaTime*3;
                 
                 
             }
@@ -67,6 +69,7 @@ public class GameMgr : MonoBehaviour
     {
         //Initiate wave somehow here
         Time.timeScale = 1;
+        gameActive = true;
         UIMgr.inst.OnGameStart();
         foreach(Weapon weap in WeaponMgr.inst.weapons)
         {

@@ -150,7 +150,8 @@ public class Pistol : Weapon
                 }
                 //Debug.Log(location + " " + weaponObject.transform.forward + " " + hit.point + "before drawline");
                 DrawLine(weaponObject.transform.position, hit.point, Color.white, 0.1f);
-                clipCount -= 1;
+                if(!ItemMgr.inst.bbGumActive)
+                    clipCount -= 1;
 
                 GameObject impactInstant = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactInstant, 2f);

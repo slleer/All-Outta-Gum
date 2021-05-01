@@ -58,7 +58,7 @@ public class UIMgr : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         healthSlider.value = Player.inst.health;
         staminaSlider.value = Player.inst.playerStamina;
@@ -73,7 +73,7 @@ public class UIMgr : MonoBehaviour
         }
         else
         {
-            waveCountDownClock -= Time.fixedDeltaTime;
+            waveCountDownClock -= Time.deltaTime;
             betweenWaveCountDownText.text = FormatTime(waveCountDownClock);
         }
     }

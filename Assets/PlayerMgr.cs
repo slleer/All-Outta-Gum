@@ -12,7 +12,8 @@ public class PlayerMgr : MonoBehaviour
     public Transform player;
     public Transform playerCamera;
 
-    public float healthGain = 1f;
+    public float healthGain = .3f;
+    public float staminaGain = 1f;
 
     float angle;
     Vector3 cameraPosition;
@@ -40,8 +41,12 @@ public class PlayerMgr : MonoBehaviour
         playerCamera.position = cameraPosition;
         if(GameMgr.inst.betweenWave)
         {
+            if (UIMgr.inst.waveCountDownClock > 0)
+                staminaGain = (Player.inst.maxStamina - Player.inst.playerStamina) / (UIMgr.inst.waveCountDownClock * 100);
             if(Player.inst.health < Player.inst.maxHealth)
                 Player.inst.health += healthGain * Time.deltaTime;
+            if (Player.inst.playerStamina < Player.inst.maxStamina)
+                Player.inst.playerStamina += staminaGain;
         }
     }
 

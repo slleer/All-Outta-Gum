@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         Item item = other.gameObject.GetComponent<Item>();
         if(!item.boostActive)
         { 
-            item.pickUpSound.Play();
+            other.GetComponent<AudioSource>().Play();
             if (item.item == ItemType.ammo)
             {
                 foreach (Weapon weap in WeaponMgr.inst.weapons)
@@ -74,10 +74,10 @@ public class Player : MonoBehaviour
             }
             else if (item.item.Equals(ItemType.boost))
             {
-                Debug.Log("Item triggered " + item.boost.BoostType + " duration " + item.boost.Duration);
+                //Debug.Log("Item triggered " + item.boost.BoostType + " duration " + item.boost.Duration);
                 other.gameObject.GetComponent<Renderer>().enabled = false;
                 item.boostActive = true;
-                Debug.Log("Duration on trigger: " + item.boost.Duration);
+                //Debug.Log("Duration on trigger: " + item.boost.Duration);
                 UIMgr.inst.ActivateBoostBar((int)item.boost.BoostType, item.boost.Duration);
                 item.boostTimer = item.boost.Duration;
                 item.life = item.boost.Duration + 1;

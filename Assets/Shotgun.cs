@@ -41,8 +41,8 @@ public class Shotgun : Weapon
         impactForce = 1500;
         shotsPerSecond = 1f;
         reloadRate = 1.5f;
-        fireRate = 1 / shotsPerSecond; 
         */
+        fireRate = 1 / shotsPerSecond; 
         reload = true;
         gunType = Gun.shotgun;
 
@@ -239,7 +239,8 @@ public class Shotgun : Weapon
                 }
                 DrawLine(weaponObject.transform.position, hit.point, Color.white, 0.1f);
 
-                clipCount -= 1;
+                if (!ItemMgr.inst.bbGumActive)
+                    clipCount -= 1;
 
                 GameObject impactInstantr2 = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactInstantr2, 2f);

@@ -30,12 +30,14 @@ public class InputMgr : MonoBehaviour
 
     void Update()
     {
+        //if tab is pressed pause or unpause
         if (Input.GetKeyUp(KeyCode.Tab))
         {
             //Debug.Log(UIMgr.inst.pausePanel.activeSelf);
             if (UIMgr.inst.pausePanel.activeSelf)
             {
                 Time.timeScale = 1;
+                //GameMgr.inst.gameActive = true;
                 WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + .01f;
                 UIMgr.inst.pausePanel.SetActive(false);
                 UIMgr.inst.scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
@@ -43,6 +45,7 @@ public class InputMgr : MonoBehaviour
             else //pause menu
             {
                 Time.timeScale = 0;
+                //GameMgr.inst.gameActive = false;
                 UIMgr.inst.pausePanel.SetActive(true);
             }
         }
@@ -69,14 +72,13 @@ public class InputMgr : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0)) //used for single shot per click aka semi-automatic
                 WeaponMgr.inst.canFire = true;
-            //if tab is pressed pause or unpause
 
             //while shift is pressed & stamina is remaining - set moveSpeedMultiplier to 3
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 //regenTimer = regenDelay
                 regenTimer = maxDelay;
-                if (Player.inst.playerStamina > 0)
+                if (Player.inst.playerStamina > 0 && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
                 {
                     Player.inst.speedMultiplier = Player.inst.sprintMultiplier;
                     Player.inst.playerStamina -= drain * Time.deltaTime;
