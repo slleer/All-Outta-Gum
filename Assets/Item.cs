@@ -52,6 +52,7 @@ public class Item : MonoBehaviour
         boostActive = false;
         played = false;
         boostTimer = 0;
+        pickUpSound = gameObject.GetComponent<AudioSource>();
 
     }
     public void FixedUpdate()
