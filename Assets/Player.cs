@@ -57,9 +57,10 @@ public class Player : MonoBehaviour
     {
         Item item = other.gameObject.GetComponent<Item>();
         if(!item.boostActive)
-        { 
-            other.GetComponent<AudioSource>().Play();
+        {
+            //other.GetComponent<AudioSource>().Play();
             //item.pickUpSound.Play();
+            ItemMgr.inst.pickUpSound.Play();
             if (item.item == ItemType.ammo)
             {
                 foreach (Weapon weap in WeaponMgr.inst.weapons)

@@ -13,6 +13,7 @@ public class ItemMgr : MonoBehaviour
     public float timedSpawn;
     public static ItemMgr inst;
     public static int itemCount;
+    public AudioSource pickUpSound;
     private void Awake()
     {
         inst = this;
@@ -49,7 +50,7 @@ public class ItemMgr : MonoBehaviour
                 int itemsIndex = items.Count;
                 items.Add(Instantiate(testCube, itemSpawnLocation.transform));
                 Item item = items[itemsIndex].GetComponent<Item>();
-                // Instantiate as ammo if 1-5, powerup 6-10
+                // Instantiate as ammo if 1-6 (60%), powerup 7-10(40%)
                 if (chance <= 6)
                     item.InstantiateAmmo();
                 else
