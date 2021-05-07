@@ -7954,16 +7954,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6355468950656495639, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355468950925970734, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355468950987264956, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355468951167252541, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6355468951554726114, guid: 206e2ec6de2038145b193496d500963f,
         type: 3}
       propertyPath: gunSprite
       value: 
       objectReference: {fileID: 348353927}
+    - target: {fileID: 6355468951697534038, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355468951764143297, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6355468951941027614, guid: 206e2ec6de2038145b193496d500963f,
         type: 3}
       propertyPath: gunSprite
       value: 
       objectReference: {fileID: 340837640}
+    - target: {fileID: 6355468952024884579, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6355468952301738504, guid: 206e2ec6de2038145b193496d500963f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8029,5 +8064,15 @@ PrefabInstance:
       propertyPath: gunSprite
       value: 
       objectReference: {fileID: 898373271}
+    - target: {fileID: 6355468952506056264, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355468952589546293, guid: 206e2ec6de2038145b193496d500963f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 206e2ec6de2038145b193496d500963f, type: 3}
