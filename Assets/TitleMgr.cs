@@ -8,6 +8,7 @@ public class TitleMgr : MonoBehaviour
     public GameObject titlePanel;
     public GameObject controlsPanel;
     public GameObject creditsPanel;
+    public GameObject loadingPanel;
     public List<Transform> wayPointList;
     public static TitleMgr inst;
     // Start is called before the first frame update
@@ -29,11 +30,12 @@ public class TitleMgr : MonoBehaviour
     public void StartGame()
     {
         //reset scene completely
-        //SceneManager.LoadScene("main");
+        //SceneManager.LoadScene(1);
         StartCoroutine(LoadMainAsyc());
     }
     IEnumerator LoadMainAsyc()
     {
+        loadingPanel.SetActive(true);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
         while(!asyncLoad.isDone)
             yield return null;

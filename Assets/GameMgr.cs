@@ -14,6 +14,7 @@ public class GameMgr : MonoBehaviour
     public bool betweenWave;
     public float coolDown = 10.0f;
     public bool gameActive;
+    public float gameOverDelay;
     private void Awake()
     {
         inst = this;
@@ -23,6 +24,7 @@ public class GameMgr : MonoBehaviour
         Time.timeScale = 0;
         betweenWave = false;
         gameActive = false;
+        gameOverDelay = 0.3f;
         StartGame();
     }
 
@@ -32,6 +34,7 @@ public class GameMgr : MonoBehaviour
         {
             Time.timeScale = 0;
             WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + 0.01f;
+            gameOverDelay -= Time.fixedDeltaTime;
             UIMgr.inst.OnGameOver();
 
         }
@@ -84,14 +87,18 @@ public class GameMgr : MonoBehaviour
     public void NewGame()
     {
         
-        Debug.Log("We made it to the new game script");
-        SceneManager.LoadScene("main");
+        //Debug.Log("We made it to the new game script");
+        if(gameOverDelay <= 0)
+            SceneManager.LoadScene("main");
     }
     public void MainMenu()
     {
-        if(Time.timeScale == 0)
-            Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        if(gameOverDelay <= 0)
+        {
+            if(Time.timeScale == 0)
+                Time.timeScale = 1;
+            SceneManager.LoadScene(0);
+        }
     }
     public void ResumeGame()
     {
@@ -103,10 +110,13 @@ public class GameMgr : MonoBehaviour
     }
     public void QuitGame()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
+        if(gameOverDelay <= 0)
+        {
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+        }
     }
 }

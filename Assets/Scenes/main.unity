@@ -560,7 +560,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 962852622}
+      - m_Target: {fileID: 1225888872}
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -1400,7 +1400,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 962852622}
+      objectReference: {fileID: 1225888872}
     - target: {fileID: 2231796755733795182, guid: b1b3ba2b8c33b2a4389492bc48886d68,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -3098,6 +3098,7 @@ MonoBehaviour:
   betweenWave: 0
   coolDown: 5
   gameActive: 0
+  gameOverDelay: 0
 --- !u!4 &962852623
 Transform:
   m_ObjectHideFlags: 0

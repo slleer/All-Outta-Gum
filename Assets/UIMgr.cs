@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIMgr : MonoBehaviour
 {
@@ -152,6 +153,21 @@ public class UIMgr : MonoBehaviour
     {
         pausePanel.SetActive(!pausePanel.activeSelf);
         creditsPanel.SetActive(!creditsPanel.activeSelf);
+    }
+    public void MainMenu()
+    {
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                        Application.Quit();
+        #endif
+        
     }
     // Format time for wave timer count
     string FormatTime(float time)
