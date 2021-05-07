@@ -22,6 +22,8 @@ public class UIMgr : MonoBehaviour
     public GameObject lowAmmoPanel;
     public GameObject betweenWavesPanel;
     public GameObject boostPanel;
+    public GameObject controlsPanel;
+    public GameObject creditsPanel;
     public Text boostPanelText;
     public Slider boostSlider;
     public Image boostFillImg;
@@ -32,7 +34,7 @@ public class UIMgr : MonoBehaviour
     public Text scoreText;
     public Text betweenWaveCountDownText;
     public Text betweenWaveScoreText;
-    public Text betweenWaveWaveCountText;
+    public Text betweenWaveZombieCountText;
     public float waveClock;
     public float waveCountDownClock;
     public bool activeWave;
@@ -74,7 +76,7 @@ public class UIMgr : MonoBehaviour
         else
         {
             waveCountDownClock -= Time.deltaTime;
-            betweenWaveCountDownText.text = FormatTime(waveCountDownClock);
+            betweenWaveCountDownText.text = string.Concat("Next Wave: ", FormatTime(waveCountDownClock));
         }
     }
     public void ActivateBoostBar(int boostType, float duration)
@@ -102,14 +104,14 @@ public class UIMgr : MonoBehaviour
     {
         betweenWavesPanel.SetActive(true);
         betweenWaveScoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
-        betweenWaveWaveCountText.text = string.Concat("Wave: ", waveCount.ToString());
+        betweenWaveZombieCountText.text = string.Concat("Most Zombies at Once: ", ZombieMgr.inst.mostZsAtOnce.ToString(), "\nTotal Zombies in Wave: ", ZombieMgr.inst.numOfZombiesInWave);
         waveCountDownClock = 10.0f;
-        betweenWaveCountDownText.text = FormatTime(waveCountDownClock);
+        betweenWaveCountDownText.text = string.Concat("Next Wave: ", FormatTime(waveCountDownClock));
 
     }
     public void OnGameStart()
     {
-        startPanel.SetActive(false);
+        //startPanel.SetActive(false);
         UpdateWaveCount();
         StartClock();
     }
@@ -140,6 +142,16 @@ public class UIMgr : MonoBehaviour
         waveCount = 0;
         UpdateWaveCount();
         StartClock();
+    }
+    public void DisplayControlsPanel()
+    {
+        pausePanel.SetActive(!pausePanel.activeSelf);
+        controlsPanel.SetActive(!controlsPanel.activeSelf);
+    }
+    public void DisplayCreditsPanel()
+    {
+        pausePanel.SetActive(!pausePanel.activeSelf);
+        creditsPanel.SetActive(!creditsPanel.activeSelf);
     }
     // Format time for wave timer count
     string FormatTime(float time)

@@ -40,12 +40,13 @@ public class InputMgr : MonoBehaviour
                 //GameMgr.inst.gameActive = true;
                 WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + .01f;
                 UIMgr.inst.pausePanel.SetActive(false);
-                UIMgr.inst.scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
+                //UIMgr.inst.scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
             }
             else //pause menu
             {
                 Time.timeScale = 0;
                 //GameMgr.inst.gameActive = false;
+                WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + .01f;
                 UIMgr.inst.pausePanel.SetActive(true);
             }
         }
@@ -59,8 +60,14 @@ public class InputMgr : MonoBehaviour
             {
                 WeaponMgr.inst.SelectNextWeapon();
             }
+            //
+            var deltaMouseWheelSpin = Input.GetAxis("Mouse ScrollWheel");
+            if(deltaMouseWheelSpin < 0f && Time.timeScale == 1) // scroll down, select pevious weapon
+                WeaponMgr.inst.SelectPreviousWeapon();
+            if(deltaMouseWheelSpin > 0f && Time.timeScale == 1) // scroll up, select next weapon
+                WeaponMgr.inst.SelectNextWeapon();
             //reload on R keyup
-            if (Input.GetKeyUp(KeyCode.R))
+            if (Input.GetKeyUp(KeyCode.R) || Input.GetMouseButtonUp(1))
                 WeaponMgr.inst.selectedWeapon.Reload();
             //check for left mouse, nextTimeToFire, and not reloading
             if ((Input.GetMouseButton(0)) && (Time.time >= WeaponMgr.inst.selectedWeapon.timeToFire))
@@ -123,7 +130,7 @@ public class InputMgr : MonoBehaviour
             #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
             #else
-                Application.Quit();
+                //Application.Quit();
             #endif
         }
     }

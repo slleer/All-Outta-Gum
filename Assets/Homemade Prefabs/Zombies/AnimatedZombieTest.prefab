@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 95446636183784616}
   - component: {fileID: 54174046382449110}
   - component: {fileID: 136043099458248162}
-  - component: {fileID: 114390374992085746}
   - component: {fileID: 114589918777285350}
   m_Layer: 0
   m_Name: AnimatedZombieTest
@@ -372,11 +371,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190601789873990}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 520328afa68e691429451635bbb84c79, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
   m_Controller: {fileID: 9100000, guid: c929656c07909194ab8a5cd79f5f371d, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -408,27 +407,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.15
+  m_Radius: 0.16
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &114390374992085746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190601789873990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c28ce59e5f760484f86252dc8c6c6195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desiredPosition: {x: 0, y: 0, z: 0}
-  desiredHeading: 0
-  speed: 0
-  turningSpeed: 0
-  eulerRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &114589918777285350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,13 +425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   maxHealth: 50
-  position: {x: 0, y: 0, z: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  desiredSpeed: 0
-  maxSpeed: 0
-  minSpeed: 0
-  heading: 0
-  desiredHeading: 0
   scoreModifier: 50000
   healthBar: {fileID: 8684734976980685459}
   healthImage: {fileID: 8684734977313198520}
@@ -732,7 +707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656809306833574}
   m_LocalRotation: {x: -2.652536e-15, y: 0.00000012098273, z: -0.043619383, w: 0.99904823}
-  m_LocalPosition: {x: -0.13221313, y: -0.01147458, z: -9.459313e-11}
+  m_LocalPosition: {x: -0.13221313, y: -0.01147458, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4877486977738410}

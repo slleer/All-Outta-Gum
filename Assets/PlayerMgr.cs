@@ -37,7 +37,8 @@ public class PlayerMgr : MonoBehaviour
         //update camera transform
         cameraPosition.x = player.position.x;
         cameraPosition.z = player.position.z;
-        cameraPosition.y = UpdateCameraZoom(cameraPosition.y);
+        if(Time.timeScale == 0)
+            cameraPosition.y = UpdateCameraZoom(cameraPosition.y);
         playerCamera.position = cameraPosition;
         if(GameMgr.inst.betweenWave)
         {

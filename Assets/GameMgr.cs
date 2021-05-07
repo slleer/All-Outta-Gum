@@ -23,6 +23,7 @@ public class GameMgr : MonoBehaviour
         Time.timeScale = 0;
         betweenWave = false;
         gameActive = false;
+        StartGame();
     }
 
     void Update()
@@ -30,7 +31,9 @@ public class GameMgr : MonoBehaviour
         if(Player.inst.health <= 0)
         {
             Time.timeScale = 0;
+            WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + 0.01f;
             UIMgr.inst.OnGameOver();
+
         }
         if(ZombieMgr.inst.waveDefeated)
         {
@@ -80,15 +83,30 @@ public class GameMgr : MonoBehaviour
     }
     public void NewGame()
     {
-        //reset scene completely
+        
+        Debug.Log("We made it to the new game script");
         SceneManager.LoadScene("main");
+    }
+    public void MainMenu()
+    {
+        if(Time.timeScale == 0)
+            Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        //GameMgr.inst.gameActive = true;
+        WeaponMgr.inst.selectedWeapon.timeToFire = Time.time + .01f;
+        UIMgr.inst.pausePanel.SetActive(false);
+        //UIMgr.inst.scoreText.text = string.Concat("Score: ", ((int)Player.inst.score).ToString());
     }
     public void QuitGame()
     {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else
-                                Application.Quit();
+            Application.Quit();
         #endif
     }
 }

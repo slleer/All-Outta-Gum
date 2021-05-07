@@ -16,7 +16,7 @@ public class ZombieMgr : MonoBehaviour
     public GameObject quickZombie;
     public GameObject strongZombie;
 
-    public static int mostZsAtOnce;
+    public int mostZsAtOnce;
     public float spawnTimerControler = 1.5f;
     public bool waveDefeated;
     public bool waveFinishedSpawning;
