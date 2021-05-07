@@ -1,0 +1,14 @@
+{
+"companyName": "ChewOut",
+"productName": "All Outta Gum",
+"dataUrl": "webglBuild.data.unityweb",
+"wasmCodeUrl": "webglBuild.wasm.code.unityweb",
+"wasmFrameworkUrl": "webglBuild.wasm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"backgroundUrl": "webglBuild.jpg",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#FFFFFF",
+"cacheControl": {"default": "must-revalidate"}
+}
