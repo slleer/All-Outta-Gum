@@ -50,8 +50,8 @@ public class InputMgr : MonoBehaviour
                 UIMgr.inst.pausePanel.SetActive(true);
             }
         }
-        if(!GameMgr.inst.betweenWave)
-        {
+        //if(!GameMgr.inst.betweenWave)
+        //{
             if (Input.GetKeyUp(KeyCode.Q))
             {
                 WeaponMgr.inst.SelectPreviousWeapon();
@@ -124,7 +124,7 @@ public class InputMgr : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
                 player.transform.Translate(Player.inst.speedMultiplier * deltaPosition * Vector3.right * Time.deltaTime, Space.World);
 
-        } //end if(!betweenWave)
+        //} //end if(!betweenWave)
         if (Input.GetKey(KeyCode.Escape))
         {
             #if UNITY_EDITOR

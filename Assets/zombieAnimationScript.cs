@@ -17,7 +17,7 @@ public class zombieAnimationScript : StateMachineBehaviour
         {
             animator.ResetTrigger("Attack");
             animator.SetTrigger("Attack");
-            animator.SetInteger("MoveSpeed", 5);
+            //animator.SetInteger("MoveSpeed", 5);
         }
     }
 
