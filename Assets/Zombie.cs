@@ -36,15 +36,18 @@ public class Zombie : MonoBehaviour
 
     public void Move()
     {
-        desiredPosition = Player.inst.transform.position;
-        desiredHeading = CalculateAngle(desiredPosition, transform.position);
-        while (desiredHeading < 0)
+        if(!gameObject.GetComponent<Target>().dead)
         {
-            desiredHeading += 360;
+            desiredPosition = Player.inst.transform.position;
+            desiredHeading = CalculateAngle(desiredPosition, transform.position);
+            while (desiredHeading < 0)
+            {
+                desiredHeading += 360;
+            }
+            eulerRotation.y = desiredHeading;
+            transform.localEulerAngles = eulerRotation;
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
-        eulerRotation.y = desiredHeading;
-        transform.localEulerAngles = eulerRotation;
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     public void Attack(Collision collision)

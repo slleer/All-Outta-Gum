@@ -70,6 +70,8 @@ MonoBehaviour:
   scoreModifier: 75000
   healthBar: {fileID: 8220666280323620124}
   healthImage: {fileID: 8220666280391826999}
+  timeToDie: 3
+  dead: 0
   ID: 0
   postion: {x: 0, y: 0, z: 0}
   maxHealthConst: 5
@@ -126,7 +128,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4020935507212044415}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 15
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1

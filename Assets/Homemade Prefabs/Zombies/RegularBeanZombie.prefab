@@ -70,6 +70,8 @@ MonoBehaviour:
   scoreModifier: 50000
   healthBar: {fileID: 5034580595947495117}
   healthImage: {fileID: 5034580596022025702}
+  timeToDie: 1.5
+  dead: 0
   ID: 0
   postion: {x: 0, y: 0, z: 0}
   maxHealthConst: 5

@@ -51,7 +51,7 @@ public class UIMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveCount = 0;
+        waveCount = 1;
         waveCountDownClock = 10;
         waveCountText.text = string.Concat("Wave: ", waveCount.ToString());
         gameOverPanel.SetActive(false);
